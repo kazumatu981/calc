@@ -1,0 +1,22 @@
+div.tokenItems-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+div.tokenItem-container {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    display: inline-block;
+}
+div.operator-container {
+    background-color: lightcyan;
+}
+div.paren-container {
+    background-color: lightsalmon;
+}
+
+div.tokenItem-type {
+    font-weight: bold;
+    font-size: xx-small;
+}

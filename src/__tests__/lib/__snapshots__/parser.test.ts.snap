@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`normal tests 1*2+3 1`] = `
+BinaryNode {
+  "left": BinaryNode {
+    "left": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "1",
+    },
+    "nodeType": "binary",
+    "operator": "*",
+    "right": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "2",
+    },
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "3",
+  },
+}
+`;
+
+exports[`normal tests 1+(2+3)+ 4 1`] = `
+BinaryNode {
+  "left": BinaryNode {
+    "left": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "1",
+    },
+    "nodeType": "binary",
+    "operator": "+",
+    "right": ParenNode {
+      "childRoot": BinaryNode {
+        "left": SingleNode {
+          "isNegative": false,
+          "nodeType": "single",
+          "value": "2",
+        },
+        "nodeType": "binary",
+        "operator": "+",
+        "right": SingleNode {
+          "isNegative": false,
+          "nodeType": "single",
+          "value": "3",
+        },
+      },
+      "nodeType": "paren",
+    },
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "4",
+  },
+}
+`;
+
+exports[`normal tests 1+2*3+ 4 1`] = `
+BinaryNode {
+  "left": BinaryNode {
+    "left": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "1",
+    },
+    "nodeType": "binary",
+    "operator": "+",
+    "right": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "2",
+      },
+      "nodeType": "binary",
+      "operator": "*",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "3",
+      },
+    },
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "4",
+  },
+}
+`;
+
+exports[`normal tests 1+2+3 1`] = `
+BinaryNode {
+  "left": BinaryNode {
+    "left": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "1",
+    },
+    "nodeType": "binary",
+    "operator": "+",
+    "right": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "2",
+    },
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "3",
+  },
+}
+`;

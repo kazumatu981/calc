@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`error tests test case: 123a 1`] = `"[tokenizer][unknown-character]: 不明なを検出しました(a)"`;
+
+exports[`non-degrade tests tokenize    123    1`] = `
+Array [
+  Object {
+    "position": 3,
+    "type": "number",
+    "value": "123",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize    123 1`] = `
+Array [
+  Object {
+    "position": 3,
+    "type": "number",
+    "value": "123",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize    123 123 1`] = `
+Array [
+  Object {
+    "position": 3,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 7,
+    "type": "number",
+    "value": "123",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize -123   -456 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 1,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 7,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 8,
+    "type": "number",
+    "value": "456",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize -123--456 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 1,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 4,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 5,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 6,
+    "type": "number",
+    "value": "456",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize 123   * 456 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 6,
+    "type": "operator",
+    "value": "*",
+  },
+  Object {
+    "position": 8,
+    "type": "number",
+    "value": "456",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize 123   + 456 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 6,
+    "type": "operator",
+    "value": "+",
+  },
+  Object {
+    "position": 8,
+    "type": "number",
+    "value": "456",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize 123   + 456*123 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 6,
+    "type": "operator",
+    "value": "+",
+  },
+  Object {
+    "position": 8,
+    "type": "number",
+    "value": "456",
+  },
+  Object {
+    "position": 11,
+    "type": "operator",
+    "value": "*",
+  },
+  Object {
+    "position": 12,
+    "type": "number",
+    "value": "123",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize 123   / 456 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 6,
+    "type": "operator",
+    "value": "/",
+  },
+  Object {
+    "position": 8,
+    "type": "number",
+    "value": "456",
+  },
+]
+`;
+
+exports[`non-degrade tests tokenize 123   - 456 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 6,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 8,
+    "type": "number",
+    "value": "456",
+  },
+]
+`;
