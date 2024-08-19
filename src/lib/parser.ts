@@ -1,4 +1,4 @@
-import { type Token } from './tokenizer';
+import { type Token } from './common-types';
 import { ParserError } from './errors';
 export type NodeType = 'single' | 'binary' | 'paren';
 
