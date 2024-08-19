@@ -1,6 +1,6 @@
 import { Mermaid } from './Mermaid';
-import { type Node, SingleNode, BinaryNode, ParenNode } from '../lib/parser';
-function generateSrcOfNode(node: Node, seed: string[], nodeId: string): string[] {
+import { type ParserNode, SingleNode, BinaryNode, ParenNode } from '../lib/parser-node';
+function generateSrcOfNode(node: ParserNode, seed: string[], nodeId: string): string[] {
     if (node.nodeType === 'single') {
         const singleNode = node as SingleNode;
         seed.push(`${nodeId}(${singleNode.value})`);
@@ -20,13 +20,13 @@ function generateSrcOfNode(node: Node, seed: string[], nodeId: string): string[]
 
     return seed;
 }
-function generateSrcOfTree(rootNode: Node): string {
+function generateSrcOfTree(rootNode: ParserNode): string {
     return `flowchart TD
 ${generateSrcOfNode(rootNode, [], 'root').join('\n')}
 `;
 }
 
-export function ParsedTree({ node }: { node: Node | undefined }) {
+export function ParsedTree({ node }: { node: ParserNode | undefined }) {
     if (node === undefined) {
         return <></>;
     }

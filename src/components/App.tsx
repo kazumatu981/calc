@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.css';
 import { TokenItems } from './TokenItems';
-import { type Token, tokenize } from '../lib/tokenizer';
-import { Parser, type Node } from '../lib/parser';
+import { Token } from '../lib/token';
+import { tokenize } from '../lib/tokenizer';
+import { Parser } from '../lib/parser';
+import { ParserNode } from '../lib/parser-node';
 import { ParsedTree } from './ParsedTree';
 
 function App() {
     const [expression, setExpression] = React.useState('');
     const [tokens, setTokens] = React.useState<Token[]>([]);
-    const [parsedNode, setParsedNode] = React.useState<Node>();
+    const [parsedNode, setParsedNode] = React.useState<ParserNode>();
     const [error, setError] = React.useState<string>('');
     function onExpressionChange(e: React.ChangeEvent<HTMLInputElement>) {
         setError('');

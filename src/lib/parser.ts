@@ -1,43 +1,6 @@
-import { type Token } from './common-types';
+import { type Token } from './token';
 import { ParserError } from './errors';
-export type NodeType = 'single' | 'binary' | 'paren';
-
-export class Node {
-    nodeType: NodeType;
-    constructor(nodeType: NodeType) {
-        this.nodeType = nodeType;
-    }
-}
-
-export class SingleNode extends Node {
-    isNegative: boolean;
-    value: string;
-    constructor(value: string, isNegative: boolean | undefined = false) {
-        super('single');
-        this.value = value;
-        this.isNegative = isNegative;
-    }
-}
-
-export class BinaryNode extends Node {
-    public left: Node;
-    public right: Node;
-    operator: string;
-    constructor(left: Node, right: Node, operator: string) {
-        super('binary');
-        this.left = left;
-        this.right = right;
-        this.operator = operator;
-    }
-}
-
-export class ParenNode extends Node {
-    public childRoot: Node;
-    constructor(childRoot: Node) {
-        super('paren');
-        this.childRoot = childRoot;
-    }
-}
+import { ParserNode, SingleNode, BinaryNode, ParenNode } from './parser-node';
 
 type ParseMode = 'normal' | 'paren';
 
@@ -52,9 +15,9 @@ export class Parser {
         this._currentIndex = currentIndex;
     }
 
-    public parse(): Node {
+    public parse(): ParserNode {
         let isFist = true;
-        let rootNode: Node | undefined = undefined;
+        let rootNode: ParserNode | undefined = undefined;
         while (this._isNotEnd()) {
             const { operatorToken, node } = this._readNextNode(isFist);
             if (isFist) {
@@ -87,7 +50,7 @@ export class Parser {
         }
     }
 
-    private _connectTwoNodes(node1: Node | undefined, node2: Node, operatorToken: Token | undefined) {
+    private _connectTwoNodes(node1: ParserNode | undefined, node2: ParserNode, operatorToken: Token | undefined) {
         if (node1 === undefined) {
             return node2;
         }
@@ -111,10 +74,10 @@ export class Parser {
 
     private _readNextNode(isFirst: boolean = false): {
         operatorToken?: Token;
-        node: Node;
+        node: ParserNode;
     } {
         let operatorToken: Token | undefined = undefined;
-        let node: Node;
+        let node: ParserNode;
         if (!isFirst) {
             if (this.currentToken.type === 'operator') {
                 operatorToken = this.currentToken;

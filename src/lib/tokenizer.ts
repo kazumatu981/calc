@@ -1,5 +1,5 @@
 import { TokenizerError } from './errors';
-import type { Token } from './common-types';
+import type { Token } from './token';
 import { CharacterTestUtil, TokenizeUtil } from './tokenizer-utils';
 
 /**

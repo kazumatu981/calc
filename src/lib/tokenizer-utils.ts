@@ -1,4 +1,4 @@
-import type { Token, TokenType } from './common-types';
+import type { Token, TokenType } from './token';
 
 export class CharacterTestUtil {
     /**
