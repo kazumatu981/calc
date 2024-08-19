@@ -35,10 +35,6 @@ export class Parser {
         return this._safeReadToken(this._currentIndex);
     }
 
-    public get nextToken(): Token {
-        return this._safeReadToken(this._currentIndex + 1);
-    }
-
     private _isNotEnd() {
         if (this._mode !== 'paren') {
             return this._currentIndex < this._tokens.length - 1;
