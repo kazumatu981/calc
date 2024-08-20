@@ -2,7 +2,9 @@
 
 exports[`error tests test case: 123a 1`] = `"[tokenizer][unknown-character]: 不明なを検出しました(a)"`;
 
-exports[`non-degrade tests tokenize    123    1`] = `
+exports[`エラー系のテスト test case: 123a 1`] = `"[tokenizer][unknown-character]: 不明なを検出しました(a)"`;
+
+exports[`リグレッションテスト tokenize    123    1`] = `
 Array [
   Object {
     "position": 3,
@@ -12,7 +14,7 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize    123 1`] = `
+exports[`リグレッションテスト tokenize    123 1`] = `
 Array [
   Object {
     "position": 3,
@@ -22,7 +24,7 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize    123 123 1`] = `
+exports[`リグレッションテスト tokenize    123 123 1`] = `
 Array [
   Object {
     "position": 3,
@@ -37,7 +39,67 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize -123   -456 1`] = `
+exports[`リグレッションテスト tokenize (12+32)*(45-23) 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "leftParen",
+    "value": "(",
+  },
+  Object {
+    "position": 1,
+    "type": "number",
+    "value": "12",
+  },
+  Object {
+    "position": 3,
+    "type": "operator",
+    "value": "+",
+  },
+  Object {
+    "position": 4,
+    "type": "number",
+    "value": "32",
+  },
+  Object {
+    "position": 6,
+    "type": "rightParen",
+    "value": ")",
+  },
+  Object {
+    "position": 7,
+    "type": "operator",
+    "value": "*",
+  },
+  Object {
+    "position": 8,
+    "type": "leftParen",
+    "value": "(",
+  },
+  Object {
+    "position": 9,
+    "type": "number",
+    "value": "45",
+  },
+  Object {
+    "position": 11,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 12,
+    "type": "number",
+    "value": "23",
+  },
+  Object {
+    "position": 14,
+    "type": "rightParen",
+    "value": ")",
+  },
+]
+`;
+
+exports[`リグレッションテスト tokenize -123   -456 1`] = `
 Array [
   Object {
     "position": 0,
@@ -62,7 +124,57 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize -123--456 1`] = `
+exports[`リグレッションテスト tokenize -123*(-456+23) 1`] = `
+Array [
+  Object {
+    "position": 0,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 1,
+    "type": "number",
+    "value": "123",
+  },
+  Object {
+    "position": 4,
+    "type": "operator",
+    "value": "*",
+  },
+  Object {
+    "position": 5,
+    "type": "leftParen",
+    "value": "(",
+  },
+  Object {
+    "position": 6,
+    "type": "operator",
+    "value": "-",
+  },
+  Object {
+    "position": 7,
+    "type": "number",
+    "value": "456",
+  },
+  Object {
+    "position": 10,
+    "type": "operator",
+    "value": "+",
+  },
+  Object {
+    "position": 11,
+    "type": "number",
+    "value": "23",
+  },
+  Object {
+    "position": 13,
+    "type": "rightParen",
+    "value": ")",
+  },
+]
+`;
+
+exports[`リグレッションテスト tokenize -123--456 1`] = `
 Array [
   Object {
     "position": 0,
@@ -92,7 +204,7 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize 123   * 456 1`] = `
+exports[`リグレッションテスト tokenize 123   * 456 1`] = `
 Array [
   Object {
     "position": 0,
@@ -112,7 +224,7 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize 123   + 456 1`] = `
+exports[`リグレッションテスト tokenize 123   + 456 1`] = `
 Array [
   Object {
     "position": 0,
@@ -132,7 +244,7 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize 123   + 456*123 1`] = `
+exports[`リグレッションテスト tokenize 123   + 456*123 1`] = `
 Array [
   Object {
     "position": 0,
@@ -162,7 +274,7 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize 123   / 456 1`] = `
+exports[`リグレッションテスト tokenize 123   / 456 1`] = `
 Array [
   Object {
     "position": 0,
@@ -182,7 +294,7 @@ Array [
 ]
 `;
 
-exports[`non-degrade tests tokenize 123   - 456 1`] = `
+exports[`リグレッションテスト tokenize 123   - 456 1`] = `
 Array [
   Object {
     "position": 0,

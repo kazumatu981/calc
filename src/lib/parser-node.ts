@@ -1,3 +1,6 @@
+import { ParserError } from './errors';
+import { Token } from './token';
+
 export type NodeType = 'single' | 'binary' | 'paren';
 
 export class ParserNode {
@@ -26,6 +29,35 @@ export class BinaryNode extends ParserNode {
         this.left = left;
         this.right = right;
         this.operator = operator;
+    }
+
+    public appendToRight(operator: string, nodeTobeAppended: ParserNode): this {
+        this.right = new BinaryNode(this.right, nodeTobeAppended, operator);
+        return this;
+    }
+    public static connectTwoNodes(
+        node1: ParserNode | undefined,
+        node2: ParserNode,
+        operatorToken: Token | undefined,
+    ): ParserNode {
+        if (node1 === undefined) {
+            return node2;
+        }
+        if (operatorToken === undefined) {
+            throw new ParserError('operator-must-be-expected');
+        }
+
+        if (node1.nodeType !== 'binary') {
+            return new BinaryNode(node1, node2, operatorToken.value);
+        } else {
+            const rootBinaryNode = node1 as BinaryNode;
+            if (operatorToken.value === '+' || operatorToken.value === '-') {
+                return new BinaryNode(node1, node2, operatorToken.value);
+            } else {
+                // 右側ノードに新しいノードを付け加える
+                return rootBinaryNode.appendToRight(operatorToken.value, node2);
+            }
+        }
     }
 }
 

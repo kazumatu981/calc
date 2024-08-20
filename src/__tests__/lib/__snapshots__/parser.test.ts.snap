@@ -124,3 +124,37 @@ BinaryNode {
   },
 }
 `;
+
+exports[`normal tests 1--1 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "1",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "1",
+  },
+}
+`;
+
+exports[`normal tests 1-1 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "1",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "1",
+  },
+}
+`;

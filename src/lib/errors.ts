@@ -1,11 +1,17 @@
 type ModuleName = 'tokenizer' | 'parser';
-type ErrorCodes = 'unknown-character' | 'operator-must-be-expected' | 'operator-must-not-be-last' | 'unknown-error';
+type ErrorCodes =
+    | 'unknown-character'
+    | 'operator-must-be-expected'
+    | 'operator-must-not-be-last'
+    | 'unexpected-token'
+    | 'unknown-error';
 const MessageDictionary: Record<ErrorCodes, string> = {
     // tokenizer errors
     'unknown-character': '不明なを検出しました',
     // parser errors
     'operator-must-be-expected': '演算子が期待されますが、演算子が見つかりません。',
     'operator-must-not-be-last': '演算子は最後に来てはいけません',
+    'unexpected-token': '予期せぬトークンを検出しました',
     'unknown-error': '不明なエラー',
 };
 
