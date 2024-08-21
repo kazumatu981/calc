@@ -1,4 +1,4 @@
-import type { Token, TokenType } from './token';
+import { Token, type TokenType } from './token';
 
 export class CharacterTestUtil {
     /**
@@ -73,22 +73,14 @@ export class TokenizeUtil {
             currentIndex++;
         }
         return {
-            token: {
-                type: 'number',
-                value: value,
-                position: startIndex,
-            },
+            token: new Token('number', value, startIndex),
             next: currentIndex,
         };
     }
 
     public static readOperatorToken(input: string, startIndex: number): { token: Token; next: number } | undefined {
         return {
-            token: {
-                type: 'operator',
-                value: input.charAt(startIndex),
-                position: startIndex,
-            },
+            token: new Token('operator', input.charAt(startIndex), startIndex),
             next: startIndex + 1,
         };
     }
@@ -99,11 +91,7 @@ export class TokenizeUtil {
         startIndex: number,
     ): { token: Token; next: number } | undefined {
         return {
-            token: {
-                type: startEnd as TokenType,
-                value: input.charAt(startIndex),
-                position: startIndex,
-            },
+            token: new Token(startEnd as TokenType, input.charAt(startIndex), startIndex),
             next: startIndex + 1,
         };
     }

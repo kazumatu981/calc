@@ -1,4 +1,4 @@
-import { type Token } from './token';
+import { Token } from './token';
 import { ParserError } from './errors';
 import { ParserNode, SingleNode, BinaryNode, ParenNode } from './parser-node';
 
