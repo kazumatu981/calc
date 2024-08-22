@@ -1,4 +1,4 @@
-import { type Token } from '../lib/token';
+import { Token } from '../lib/tokenizer';
 import './Token.css';
 
 export function TokenItem({ token }: { token: Token }) {

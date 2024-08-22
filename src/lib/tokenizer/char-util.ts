@@ -1,6 +1,4 @@
-import { Token, type TokenType } from './token';
-
-export class CharacterTestUtil {
+export class CharUtil {
     /**
      * 数字どうかを判定する
      * @param s 対象文字列
@@ -54,45 +52,5 @@ export class CharacterTestUtil {
     public static isRightParen(s: string, pos: number): boolean {
         const c = s.charAt(pos);
         return c === ')';
-    }
-}
-
-export class TokenizeUtil {
-    public static skipSpaces(input: string, startIndex: number): number {
-        let currentIndex = startIndex;
-        while (currentIndex < input.length && CharacterTestUtil.isWhiteSpace(input, currentIndex)) {
-            currentIndex++;
-        }
-        return currentIndex;
-    }
-    public static readNumberToken(input: string, startIndex: number): { token: Token; next: number } | undefined {
-        let currentIndex = startIndex;
-        let value = '';
-        while (currentIndex < input.length && CharacterTestUtil.isDigit(input, currentIndex)) {
-            value += input.charAt(currentIndex);
-            currentIndex++;
-        }
-        return {
-            token: new Token('number', value, startIndex),
-            next: currentIndex,
-        };
-    }
-
-    public static readOperatorToken(input: string, startIndex: number): { token: Token; next: number } | undefined {
-        return {
-            token: new Token('operator', input.charAt(startIndex), startIndex),
-            next: startIndex + 1,
-        };
-    }
-
-    public static readParanToken(
-        input: string,
-        startEnd: 'leftParen' | 'rightParen',
-        startIndex: number,
-    ): { token: Token; next: number } | undefined {
-        return {
-            token: new Token(startEnd as TokenType, input.charAt(startIndex), startIndex),
-            next: startIndex + 1,
-        };
     }
 }

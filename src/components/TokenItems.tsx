@@ -1,4 +1,4 @@
-import { type Token } from '../lib/token';
+import { Token } from '../lib/tokenizer';
 import { TokenItem } from './TokenItem';
 import './Token.css';
 

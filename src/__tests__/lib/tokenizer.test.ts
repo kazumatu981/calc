@@ -1,5 +1,4 @@
-import { tokenize } from '../../lib/tokenizer';
-import { type Token } from '../../lib/token';
+import { tokenize, Token, tokenizeAsync } from '../../lib/tokenizer';
 
 describe('リグレッションテスト', () => {
     const testCases = [
@@ -22,10 +21,15 @@ describe('リグレッションテスト', () => {
             expect(tokenize(testCase)).toMatchSnapshot();
         });
     });
+    testCases.forEach((testCase) => {
+        test(`tokenizeAsync ${testCase}`, async () => {
+            await expect(tokenizeAsync(testCase)).resolves.toMatchSnapshot();
+        });
+    });
 });
 
 describe('通常の単体テスト', () => {
-    const testCases: { input: string; expected: Token[] }[] = [
+    const testCases: { input: string; expected: any[] }[] = [
         {
             input: '123',
             expected: [

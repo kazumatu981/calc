@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css';
 import { TokenItems } from './TokenItems';
-import { Token } from '../lib/token';
-import { tokenize } from '../lib/tokenizer';
-import { Parser } from '../lib/parser';
-import { ParserNode } from '../lib/parser-node';
+import { tokenize, Token } from '../lib/tokenizer';
+import { Parser } from '../lib/parser/parser';
+import { ParserNode } from '../lib/parser/parser-node';
 import { ParsedTree } from './ParsedTree';
 
 function App() {

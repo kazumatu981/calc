@@ -1,5 +1,5 @@
-import { ParserError } from './errors';
-import { Token } from './token';
+import { ParserError } from '../common/errors';
+import { Token } from '../tokenizer/token';
 
 export type NodeType = 'single' | 'binary' | 'paren';
 

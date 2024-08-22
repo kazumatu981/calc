@@ -1,6 +1,6 @@
-import { Token } from './token';
-import { ParserError } from './errors';
-import { ParserNode, SingleNode, BinaryNode, ParenNode } from './parser-node';
+import { Token } from '../tokenizer/token';
+import { ParserError } from '../common/errors';
+import { ParserNode, SingleNode, ParenNode } from './parser-node';
 
 type ParseMode = 'normal' | 'paren';
 
@@ -9,6 +9,7 @@ export interface ParserOptions {
     mode?: ParseMode;
 }
 export class Parser {
+    private _startIndex: number;
     private _tokens: Token[];
     private _currentIndex: number;
     private _mode: ParseMode;
@@ -16,10 +17,12 @@ export class Parser {
     public constructor(tokens: Token[], options?: ParserOptions) {
         this._tokens = tokens;
         this._mode = options?.mode ?? 'normal';
-        this._currentIndex = options?.startIndex ?? 0;
+        this._startIndex = options?.startIndex ?? 0;
+        this._currentIndex = this._startIndex;
     }
 
     public parse(): ParserNode {
+        this._currentIndex = this._startIndex;
         let isFist = true;
         let rootNode: ParserNode | undefined = undefined;
         while (this._isNotEnd()) {
@@ -45,9 +48,9 @@ export class Parser {
 
     private _isNotEnd() {
         if (this._mode !== 'paren') {
-            return this._currentIndex < this._tokens.length - 1;
+            return this._currentIndex < this._tokens.length;
         } else {
-            return this._currentIndex < this._tokens.length - 1 && !this.currentToken.isRightParen;
+            return this._currentIndex < this._tokens.length && !this.currentToken.isRightParen;
         }
     }
     private _readNextOperatorAndNode(isFirst: boolean = false): {

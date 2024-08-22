@@ -1,5 +1,5 @@
 import { Mermaid } from './Mermaid';
-import { type ParserNode, SingleNode, BinaryNode, ParenNode } from '../lib/parser-node';
+import { type ParserNode, SingleNode, BinaryNode, ParenNode } from '../lib/parser/parser-node';
 function generateSrcOfNode(node: ParserNode, seed: string[], nodeId: string): string[] {
     if (node.nodeType === 'single') {
         const singleNode = node as SingleNode;
