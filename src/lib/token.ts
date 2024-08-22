@@ -31,7 +31,20 @@ export class Token {
     public get isRightParen(): boolean {
         return this.type === 'rightParen';
     }
+
+    public get isParen(): boolean {
+        return this.isLeftParen || this.isRightParen;
+    }
+
     public get isNegativeSign(): boolean {
         return this.type === 'operator' && this.value === '-';
+    }
+
+    public get isPrimaryOperator(): boolean {
+        return this.type === 'operator' && (this.value === '*' || this.value === '/');
+    }
+
+    public get isSecondaryOperator(): boolean {
+        return this.type === 'operator' && (this.value === '+' || this.value === '-');
     }
 }

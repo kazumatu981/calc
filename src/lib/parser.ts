@@ -27,7 +27,7 @@ export class Parser {
             if (isFist) {
                 isFist = false;
             }
-            rootNode = BinaryNode.connectTwoNodes(rootNode, node, operatorToken);
+            rootNode = ParserNode.connectTwoNodes(rootNode, node, operatorToken);
         }
         if (rootNode === undefined) {
             throw new ParserError('operator-must-be-expected');
@@ -47,10 +47,7 @@ export class Parser {
         if (this._mode !== 'paren') {
             return this._currentIndex < this._tokens.length - 1;
         } else {
-            return (
-                this._currentIndex < this._tokens.length - 1 &&
-                this._safeReadTokenAt(this._currentIndex).type !== 'rightParen'
-            );
+            return this._currentIndex < this._tokens.length - 1 && !this.currentToken.isRightParen;
         }
     }
     private _readNextOperatorAndNode(isFirst: boolean = false): {
@@ -62,19 +59,10 @@ export class Parser {
         if (!isFirst) {
             operatorToken = this._readAsOperatorToken();
         }
-        if (
-            this.currentToken.type === 'number' ||
-            (this.currentToken.type === 'operator' && this.currentToken.value === '-')
-        ) {
+        if (this.currentToken.isNumber || this.currentToken.isNegativeSign) {
             node = this._readAsSingleNode();
-        } else if (this.currentToken.type === 'leftParen') {
-            const childParser = new Parser(this._tokens, {
-                startIndex: this._currentIndex + 1,
-                mode: 'paren',
-            });
-            const childRoot = childParser.parse();
-            node = new ParenNode(childRoot);
-            this._currentIndex = childParser._currentIndex + 1;
+        } else if (this.currentToken.isLeftParen) {
+            node = this._readAsParenNode();
         } else {
             throw new ParserError('unknown-character');
         }
@@ -93,20 +81,26 @@ export class Parser {
     }
     private _readAsSingleNode(): SingleNode {
         let node: SingleNode;
-        if (this.currentToken.type === 'number') {
+        if (this.currentToken.isNumber) {
             node = new SingleNode(this.currentToken.value);
             this._currentIndex++;
-        } else if (
-            this.currentToken.type === 'operator' &&
-            this.currentToken.value === '-' &&
-            this.nextToken.type === 'number'
-        ) {
+        } else if (this.currentToken.isNegativeSign && this.nextToken.isNumber) {
             node = new SingleNode(this.nextToken.value, true);
             this._currentIndex += 2;
         } else {
             throw new ParserError('unexpected-token');
         }
         return node;
+    }
+
+    private _readAsParenNode(): ParenNode {
+        const childParser = new Parser(this._tokens, {
+            startIndex: this._currentIndex + 1,
+            mode: 'paren',
+        });
+        const childRoot = childParser.parse();
+        this._currentIndex = childParser._currentIndex + 1;
+        return new ParenNode(childRoot);
     }
     private _safeReadTokenAt(index: number): Token {
         if (index < this._tokens.length) {
