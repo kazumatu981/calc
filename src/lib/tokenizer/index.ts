@@ -1,8 +1,7 @@
-import { Token, TokenType } from './token';
+import { Token, type TokenType } from './token';
 import { Tokenizer } from './tokenizer';
 
-export { Token };
-export type { TokenType };
+export { Token, TokenType };
 
 /**
  * 入力文字列を字句に分割する(非同期版)

@@ -1,8 +1,8 @@
 import { Parser } from './parser';
-import { ParserNode } from './parser-node';
+import { ParserNode, SingleNode, BinaryNode, ParenNode, type NodeType } from './parser-node';
 import { tokenize, type Token } from '../tokenizer';
 
-export { ParserNode };
+export { ParserNode, SingleNode, BinaryNode, ParenNode, NodeType };
 
 export async function parseAsync(tokens: Token[]): Promise<ParserNode>;
 export async function parseAsync(expression: string): Promise<ParserNode>;
