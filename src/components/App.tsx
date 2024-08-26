@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { TokenizePanel } from './TokenizePanel';
+import { TokenizerPanel } from './TokenizerPanel';
 import { tokenizeAsync, Token } from '../lib/tokenizer';
 import { parseAsync } from '../lib/parser';
 import { ParserNode } from '../lib/parser/parser-node';
@@ -58,12 +58,17 @@ function App() {
                     onChange={(e) => setExpression(e.target.value)}
                 />
             </p>
-            <>{error}</>
-
-            <h2>字句解析</h2>
-            {tokens.length === 0 ? <></> : <TokenizePanel tokens={tokens} />}
-            <h2>構文解析</h2>
-            <ParserPanel node={parsedNode} />
+            <div className="resultPanels">
+                <div className="tokenizerPanel">
+                    <h2>字句解析</h2>
+                    <TokenizerPanel tokens={tokens} />
+                </div>
+                <div className="parserPanel">
+                    <h2>構文解析</h2>
+                    <ParserPanel node={parsedNode} />
+                </div>
+                <div className="messagePanel">{error}</div>
+            </div>
         </div>
     );
 }

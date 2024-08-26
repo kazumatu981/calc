@@ -17,8 +17,10 @@ function TokenItem({ token }: { token: Token }) {
     );
 }
 
-export function TokenizePanel({ tokens }: { tokens: Token[] }) {
-    return (
+export function TokenizerPanel({ tokens }: { tokens: Token[] }) {
+    return tokens.length === 0 ? (
+        <></>
+    ) : (
         <div className="tokenItems-container">
             {tokens.map((token) => (
                 <TokenItem key={token.id} token={token} />
