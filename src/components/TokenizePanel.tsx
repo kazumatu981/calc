@@ -1,18 +1,28 @@
 import { Token } from '../lib/tokenizer';
 import './Token.css';
 
-export function TokenItem({ token }: { token: Token }) {
+function TokenItem({ token }: { token: Token }) {
     const classNames = ['tokenItem-container'];
-    if (token.type === 'operator') {
+    if (token.isOperator) {
         classNames.push('operator-container');
     }
-    if (token.type === 'leftParen' || token.type === 'rightParen') {
+    if (token.isParen) {
         classNames.push('paren-container');
     }
     return (
         <div className={classNames.join(' ')}>
             <div>{token.value}</div>
             <div className="tokenItem-type">{token.type}</div>
+        </div>
+    );
+}
+
+export function TokenizePanel({ tokens }: { tokens: Token[] }) {
+    return (
+        <div className="tokenItems-container">
+            {tokens.map((token) => (
+                <TokenItem key={token.id} token={token} />
+            ))}
         </div>
     );
 }

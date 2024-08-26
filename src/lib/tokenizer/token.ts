@@ -7,10 +7,12 @@ export type TokenType = 'number' | 'operator' | 'leftParen' | 'rightParen';
  * 切り出した字句
  */
 export class Token {
+    public readonly id: string;
     public readonly type: TokenType;
     public readonly value: string;
     public readonly position: number;
     constructor(type: TokenType, value: string, position: number) {
+        this.id = `${type}-${value}-${position}`;
         this.type = type;
         this.value = value;
         this.position = position;
