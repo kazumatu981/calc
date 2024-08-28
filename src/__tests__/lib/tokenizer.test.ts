@@ -1,6 +1,6 @@
-import { tokenize, type Token } from '../../lib/tokenizer';
+import { tokenize, Token, tokenizeAsync } from '../../lib/tokenizer';
 
-describe('non-degrade tests', () => {
+describe('リグレッションテスト', () => {
     const testCases = [
         '   123',
         '   123   ',
@@ -12,6 +12,8 @@ describe('non-degrade tests', () => {
         '123   + 456*123',
         '-123   -456',
         '-123--456',
+        '-123*(-456+23)',
+        '(12+32)*(45-23)',
     ];
 
     testCases.forEach((testCase) => {
@@ -19,14 +21,20 @@ describe('non-degrade tests', () => {
             expect(tokenize(testCase)).toMatchSnapshot();
         });
     });
+    testCases.forEach((testCase) => {
+        test(`tokenizeAsync ${testCase}`, async () => {
+            await expect(tokenizeAsync(testCase)).resolves.toMatchSnapshot();
+        });
+    });
 });
 
-describe('normal tests', () => {
-    const testCases: { input: string; expected: Token[] }[] = [
+describe('通常の単体テスト', () => {
+    const testCases: { input: string; expected: any[] }[] = [
         {
             input: '123',
             expected: [
                 {
+                    position: 0,
                     type: 'number',
                     value: '123',
                 },
@@ -36,14 +44,17 @@ describe('normal tests', () => {
             input: '123+456',
             expected: [
                 {
+                    position: 0,
                     type: 'number',
                     value: '123',
                 },
                 {
+                    position: 3,
                     type: 'operator',
                     value: '+',
                 },
                 {
+                    position: 4,
                     type: 'number',
                     value: '456',
                 },
@@ -53,14 +64,17 @@ describe('normal tests', () => {
             input: '123 +456',
             expected: [
                 {
+                    position: 0,
                     type: 'number',
                     value: '123',
                 },
                 {
+                    position: 4,
                     type: 'operator',
                     value: '+',
                 },
                 {
+                    position: 5,
                     type: 'number',
                     value: '456',
                 },
@@ -70,14 +84,17 @@ describe('normal tests', () => {
             input: '123 +456 ',
             expected: [
                 {
+                    position: 0,
                     type: 'number',
                     value: '123',
                 },
                 {
+                    position: 4,
                     type: 'operator',
                     value: '+',
                 },
                 {
+                    position: 5,
                     type: 'number',
                     value: '456',
                 },
@@ -87,24 +104,69 @@ describe('normal tests', () => {
             input: '123 +456 + 789',
             expected: [
                 {
+                    position: 0,
                     type: 'number',
                     value: '123',
                 },
                 {
+                    position: 4,
                     type: 'operator',
                     value: '+',
                 },
                 {
+                    position: 5,
                     type: 'number',
                     value: '456',
                 },
                 {
+                    position: 9,
                     type: 'operator',
                     value: '+',
                 },
                 {
+                    position: 11,
                     type: 'number',
                     value: '789',
+                },
+            ],
+        },
+        {
+            input: '2*(3+4)',
+            expected: [
+                {
+                    position: 0,
+                    type: 'number',
+                    value: '2',
+                },
+                {
+                    position: 1,
+                    type: 'operator',
+                    value: '*',
+                },
+                {
+                    position: 2,
+                    type: 'leftParen',
+                    value: '(',
+                },
+                {
+                    position: 3,
+                    type: 'number',
+                    value: '3',
+                },
+                {
+                    position: 4,
+                    type: 'operator',
+                    value: '+',
+                },
+                {
+                    position: 5,
+                    type: 'number',
+                    value: '4',
+                },
+                {
+                    position: 6,
+                    type: 'rightParen',
+                    value: ')',
                 },
             ],
         },
@@ -114,6 +176,7 @@ describe('normal tests', () => {
         for (let i = 0; i < actual.length; i++) {
             expect(actual[i].type).toEqual(expected[i].type);
             expect(actual[i].value).toEqual(expected[i].value);
+            expect(actual[i].position).toEqual(expected[i].position);
         }
     }
 
@@ -125,7 +188,7 @@ describe('normal tests', () => {
     });
 });
 
-describe('error tests', () => {
+describe('エラー系のテスト', () => {
     const testCases: { input: string; expected: string }[] = [
         {
             input: '123a',

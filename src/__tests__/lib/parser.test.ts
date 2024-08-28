@@ -1,29 +1,50 @@
 import { tokenize } from '../../lib/tokenizer';
-import { Parser } from '../../lib/parser';
+import { parse, parseAsync } from '../../lib/parser';
 
-describe('normal tests', () => {
-    test('1+2+3', () => {
-        const tokens = tokenize('1+2+3');
-        const parser = new Parser(tokens);
-        const node = parser.parse();
-        expect(node).toMatchSnapshot();
+describe('リグレッションテスト', () => {
+    const testCases = [
+        '   123',
+        '   123   ',
+        '123   + 456',
+        '123   * 456',
+        '123   - 456',
+        '123   / 456',
+        '123   + 456*123',
+        '-123   -456',
+        '-123--456',
+        '-123*(-456+23)',
+        '(12+32)*(45-23)',
+    ];
+
+    describe('parse from string', () => {
+        testCases.forEach((testCase) => {
+            test(`parse ${testCase}`, () => {
+                expect(parse(testCase)).toMatchSnapshot();
+            });
+        });
     });
-    test('1*2+3', () => {
-        const tokens = tokenize('1*2+3');
-        const parser = new Parser(tokens);
-        const node = parser.parse();
-        expect(node).toMatchSnapshot();
+
+    describe('parse from tokens', () => {
+        testCases.forEach((testCase) => {
+            test(`parse ${testCase}`, () => {
+                expect(parse(tokenize(testCase))).toMatchSnapshot();
+            });
+        });
     });
-    test('1+2*3+ 4', () => {
-        const tokens = tokenize('1+2*3+ 4');
-        const parser = new Parser(tokens);
-        const node = parser.parse();
-        expect(node).toMatchSnapshot();
+
+    describe('parseAsync from string', () => {
+        testCases.forEach((testCase) => {
+            test(`parseAsync ${testCase}`, async () => {
+                await expect(parseAsync(testCase)).resolves.toMatchSnapshot();
+            });
+        });
     });
-    test('1+(2+3)+ 4', () => {
-        const tokens = tokenize('1+(2+3)+ 4');
-        const parser = new Parser(tokens);
-        const node = parser.parse();
-        expect(node).toMatchSnapshot();
+
+    describe('parseAsync from tokens', () => {
+        testCases.forEach((testCase) => {
+            test(`parseAsync ${testCase}`, async () => {
+                await expect(parseAsync(tokenize(testCase))).resolves.toMatchSnapshot();
+            });
+        });
     });
 });
