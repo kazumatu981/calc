@@ -55,7 +55,7 @@ export class Tokenizer {
             return this._readParanToken('rightParen');
         } else {
             // 予期せぬ文字を検出した
-            throw new TokenizerError('unknown-character', this.expression.charAt(this.currentIndex));
+            throw new TokenizerError('unknown-character', this.currentIndex);
         }
     }
 

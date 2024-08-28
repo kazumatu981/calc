@@ -33,7 +33,10 @@ export class Parser {
             rootNode = ParserNode.connectTwoNodes(rootNode, node, operatorToken);
         }
         if (rootNode === undefined) {
-            throw new ParserError('operator-must-be-expected');
+            throw new ParserError('no-token');
+        }
+        if (this._mode === 'paren' && !this.currentToken.isRightParen) {
+            throw new ParserError('paren-must-be-expected');
         }
         return rootNode;
     }

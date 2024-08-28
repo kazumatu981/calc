@@ -11,19 +11,17 @@ export function ParserPanel({ node }: { node: ParserNode | undefined }) {
     const [key, setKey] = useState<string>('');
 
     useEffect(() => {
+        console.log('update mermaid');
         if (node) {
             const mermaidSrc = drawTree(node);
             sha256Hash(mermaidSrc).then((hash) => {
                 setSrc(mermaidSrc);
                 setKey(hash);
+
+                mermaid.init({}, ref.current === null ? undefined : ref.current);
             });
         }
-    }, [node]);
-    useEffect(() => {
-        if (src) {
-            mermaid.init({}, ref.current === null ? undefined : ref.current);
-        }
-    }, [src]);
+    }, [node, src]);
 
     return src && node ? (
         <div className="mermaid" ref={ref} key={key}>
