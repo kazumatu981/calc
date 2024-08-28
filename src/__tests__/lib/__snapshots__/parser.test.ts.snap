@@ -1,126 +1,857 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`normal tests 1*2+3 1`] = `
+exports[`リグレッションテスト parse from string parse    123    1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parse from string parse    123 1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parse from string parse (12+32)*(45-23) 1`] = `
 BinaryNode {
-  "left": BinaryNode {
+  "left": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "12",
+      },
+      "nodeType": "binary",
+      "operator": "+",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "32",
+      },
+    },
+    "nodeType": "paren",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "45",
+      },
+      "nodeType": "binary",
+      "operator": "-",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
+    },
+    "nodeType": "paren",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from string parse -123   -456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from string parse -123*(-456+23) 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": true,
+        "nodeType": "single",
+        "value": "456",
+      },
+      "nodeType": "binary",
+      "operator": "+",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
+    },
+    "nodeType": "paren",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from string parse -123--456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from string parse 123   * 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from string parse 123   + 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from string parse 123   + 456*123 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": BinaryNode {
     "left": SingleNode {
       "isNegative": false,
       "nodeType": "single",
-      "value": "1",
+      "value": "456",
     },
     "nodeType": "binary",
     "operator": "*",
     "right": SingleNode {
       "isNegative": false,
       "nodeType": "single",
-      "value": "2",
+      "value": "123",
     },
-  },
-  "nodeType": "binary",
-  "operator": "+",
-  "right": SingleNode {
-    "isNegative": false,
-    "nodeType": "single",
-    "value": "3",
   },
 }
 `;
 
-exports[`normal tests 1+(2+3)+ 4 1`] = `
+exports[`リグレッションテスト parse from string parse 123   / 456 1`] = `
 BinaryNode {
-  "left": BinaryNode {
-    "left": SingleNode {
-      "isNegative": false,
-      "nodeType": "single",
-      "value": "1",
-    },
-    "nodeType": "binary",
-    "operator": "+",
-    "right": ParenNode {
-      "childRoot": BinaryNode {
-        "left": SingleNode {
-          "isNegative": false,
-          "nodeType": "single",
-          "value": "2",
-        },
-        "nodeType": "binary",
-        "operator": "+",
-        "right": SingleNode {
-          "isNegative": false,
-          "nodeType": "single",
-          "value": "3",
-        },
-      },
-      "nodeType": "paren",
-    },
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
   },
   "nodeType": "binary",
-  "operator": "+",
+  "operator": "/",
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
-    "value": "4",
+    "value": "456",
   },
 }
 `;
 
-exports[`normal tests 1+2*3+ 4 1`] = `
+exports[`リグレッションテスト parse from string parse 123   - 456 1`] = `
 BinaryNode {
-  "left": BinaryNode {
-    "left": SingleNode {
-      "isNegative": false,
-      "nodeType": "single",
-      "value": "1",
-    },
-    "nodeType": "binary",
-    "operator": "+",
-    "right": BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse    123    1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse    123 1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse (12+32)*(45-23) 1`] = `
+BinaryNode {
+  "left": ParenNode {
+    "childRoot": BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
-        "value": "2",
+        "value": "12",
       },
       "nodeType": "binary",
-      "operator": "*",
+      "operator": "+",
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
-        "value": "3",
+        "value": "32",
       },
     },
+    "nodeType": "paren",
   },
   "nodeType": "binary",
-  "operator": "+",
-  "right": SingleNode {
-    "isNegative": false,
-    "nodeType": "single",
-    "value": "4",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "45",
+      },
+      "nodeType": "binary",
+      "operator": "-",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
+    },
+    "nodeType": "paren",
   },
 }
 `;
 
-exports[`normal tests 1+2+3 1`] = `
+exports[`リグレッションテスト parse from tokens parse -123   -456 1`] = `
 BinaryNode {
-  "left": BinaryNode {
-    "left": SingleNode {
-      "isNegative": false,
-      "nodeType": "single",
-      "value": "1",
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse -123*(-456+23) 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": true,
+        "nodeType": "single",
+        "value": "456",
+      },
+      "nodeType": "binary",
+      "operator": "+",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
     },
-    "nodeType": "binary",
-    "operator": "+",
-    "right": SingleNode {
-      "isNegative": false,
-      "nodeType": "single",
-      "value": "2",
-    },
+    "nodeType": "paren",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse -123--456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse 123   * 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse 123   + 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
   },
   "nodeType": "binary",
   "operator": "+",
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
-    "value": "3",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse 123   + 456*123 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": BinaryNode {
+    "left": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "456",
+    },
+    "nodeType": "binary",
+    "operator": "*",
+    "right": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "123",
+    },
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse 123   / 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "/",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parse from tokens parse 123   - 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync    123    1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync    123 1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync (12+32)*(45-23) 1`] = `
+BinaryNode {
+  "left": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "12",
+      },
+      "nodeType": "binary",
+      "operator": "+",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "32",
+      },
+    },
+    "nodeType": "paren",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "45",
+      },
+      "nodeType": "binary",
+      "operator": "-",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
+    },
+    "nodeType": "paren",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync -123   -456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync -123*(-456+23) 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": true,
+        "nodeType": "single",
+        "value": "456",
+      },
+      "nodeType": "binary",
+      "operator": "+",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
+    },
+    "nodeType": "paren",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync -123--456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync 123   * 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync 123   + 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync 123   + 456*123 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": BinaryNode {
+    "left": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "456",
+    },
+    "nodeType": "binary",
+    "operator": "*",
+    "right": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "123",
+    },
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync 123   / 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "/",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from string parseAsync 123   - 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync    123    1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync    123 1`] = `
+SingleNode {
+  "isNegative": false,
+  "nodeType": "single",
+  "value": "123",
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync (12+32)*(45-23) 1`] = `
+BinaryNode {
+  "left": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "12",
+      },
+      "nodeType": "binary",
+      "operator": "+",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "32",
+      },
+    },
+    "nodeType": "paren",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "45",
+      },
+      "nodeType": "binary",
+      "operator": "-",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
+    },
+    "nodeType": "paren",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync -123   -456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync -123*(-456+23) 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": ParenNode {
+    "childRoot": BinaryNode {
+      "left": SingleNode {
+        "isNegative": true,
+        "nodeType": "single",
+        "value": "456",
+      },
+      "nodeType": "binary",
+      "operator": "+",
+      "right": SingleNode {
+        "isNegative": false,
+        "nodeType": "single",
+        "value": "23",
+      },
+    },
+    "nodeType": "paren",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync -123--456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": true,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync 123   * 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "*",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync 123   + 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync 123   + 456*123 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "+",
+  "right": BinaryNode {
+    "left": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "456",
+    },
+    "nodeType": "binary",
+    "operator": "*",
+    "right": SingleNode {
+      "isNegative": false,
+      "nodeType": "single",
+      "value": "123",
+    },
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync 123   / 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "/",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
+  },
+}
+`;
+
+exports[`リグレッションテスト parseAsync from tokens parseAsync 123   - 456 1`] = `
+BinaryNode {
+  "left": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "123",
+  },
+  "nodeType": "binary",
+  "operator": "-",
+  "right": SingleNode {
+    "isNegative": false,
+    "nodeType": "single",
+    "value": "456",
   },
 }
 `;
