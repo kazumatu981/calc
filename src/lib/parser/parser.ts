@@ -70,7 +70,7 @@ export class Parser {
         } else if (this.currentToken.isLeftParen) {
             node = this._readAsParenNode();
         } else {
-            throw new ParserError('unknown-character');
+            throw new ParserError('unexpected-token');
         }
 
         return { operatorToken, node };
@@ -112,7 +112,8 @@ export class Parser {
         if (index < this._tokens.length) {
             return this._tokens[index];
         } else {
-            throw new ParserError('unknown-character');
+            console.error('index out of range');
+            throw new ParserError('no-token');
         }
     }
 }

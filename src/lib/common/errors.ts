@@ -4,7 +4,6 @@ type ErrorCodes =
     | 'no-token'
     | 'paren-must-be-expected'
     | 'operator-must-be-expected'
-    | 'operator-must-not-be-last'
     | 'unexpected-token'
     | 'unknown-error';
 const MessageDictionary: Record<ErrorCodes, string> = {
@@ -13,8 +12,7 @@ const MessageDictionary: Record<ErrorCodes, string> = {
     // parser errors
     'no-token': 'トークンがありません',
     'paren-must-be-expected': '括弧が期待されますが、括弧が見つかりません',
-    'operator-must-be-expected': '演算子が期待されますが、演算子が見つかりません。',
-    'operator-must-not-be-last': '演算子は最後に来てはいけません',
+    'operator-must-be-expected': '演算子が期待されますが、演算子が見つかりません',
     'unexpected-token': '予期せぬトークンを検出しました',
     'unknown-error': '不明なエラー',
 };
