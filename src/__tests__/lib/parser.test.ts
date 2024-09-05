@@ -56,12 +56,20 @@ describe('エラーケーステスト', () => {
             expected: 'no-token',
         },
         {
+            input: '123+ (456',
+            expected: 'paren-must-be-expected',
+        },
+        {
             input: '123+',
             expected: 'operator-must-not-be-last',
         },
         {
-            input: '123+ (456',
-            expected: 'paren-must-be-expected',
+            input: '123 456',
+            expected: 'operator-must-be-expected',
+        },
+        {
+            input: '123+ *456',
+            expected: 'unexpected-token',
         },
     ];
 

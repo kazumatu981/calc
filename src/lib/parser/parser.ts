@@ -74,7 +74,7 @@ export class Parser {
         }
 
         if (this.currentToken === undefined) {
-            throw new ParserError('no-token');
+            throw new ParserError('operator-must-not-be-last');
         } else if (this.currentToken.isNumber || this.currentToken.isNegativeSign) {
             node = this._readAsSingleNode();
         } else if (this.currentToken.isLeftParen) {
