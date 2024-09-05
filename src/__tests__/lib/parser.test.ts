@@ -48,3 +48,32 @@ describe('リグレッションテスト', () => {
         });
     });
 });
+
+describe('エラーケーステスト', () => {
+    const testCases = [
+        {
+            input: '',
+            expected: 'no-token',
+        },
+        {
+            input: '123+',
+            expected: 'operator-must-not-be-last',
+        },
+        {
+            input: '123+ (456',
+            expected: 'paren-must-be-expected',
+        },
+    ];
+
+    testCases.forEach((testCase) => {
+        test(`test case: ${testCase.input}`, () => {
+            expect(() => {
+                parse(testCase.input);
+            }).toThrow(
+                expect.objectContaining({
+                    code: testCase.expected,
+                }),
+            );
+        });
+    });
+});
