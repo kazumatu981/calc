@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`エラー系のテスト test case: 123a 1`] = `"[tokenizer][unknown-character]: 不明なを検出しました(a)"`;
+exports[`エラー系のテスト test case: 123a 1`] = `"不明な文字を検出しました"`;
 
 exports[`リグレッションテスト tokenize    123    1`] = `
 Array [
   Token {
+    "id": "number-123-3",
     "position": 3,
     "type": "number",
     "value": "123",
@@ -15,6 +16,7 @@ Array [
 exports[`リグレッションテスト tokenize    123 1`] = `
 Array [
   Token {
+    "id": "number-123-3",
     "position": 3,
     "type": "number",
     "value": "123",
@@ -25,11 +27,13 @@ Array [
 exports[`リグレッションテスト tokenize    123 123 1`] = `
 Array [
   Token {
+    "id": "number-123-3",
     "position": 3,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "number-123-7",
     "position": 7,
     "type": "number",
     "value": "123",
@@ -40,56 +44,67 @@ Array [
 exports[`リグレッションテスト tokenize (12+32)*(45-23) 1`] = `
 Array [
   Token {
+    "id": "leftParen-(-0",
     "position": 0,
     "type": "leftParen",
     "value": "(",
   },
   Token {
+    "id": "number-12-1",
     "position": 1,
     "type": "number",
     "value": "12",
   },
   Token {
+    "id": "operator-+-3",
     "position": 3,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-32-4",
     "position": 4,
     "type": "number",
     "value": "32",
   },
   Token {
+    "id": "rightParen-)-6",
     "position": 6,
     "type": "rightParen",
     "value": ")",
   },
   Token {
+    "id": "operator-*-7",
     "position": 7,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "leftParen-(-8",
     "position": 8,
     "type": "leftParen",
     "value": "(",
   },
   Token {
+    "id": "number-45-9",
     "position": 9,
     "type": "number",
     "value": "45",
   },
   Token {
+    "id": "operator---11",
     "position": 11,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-23-12",
     "position": 12,
     "type": "number",
     "value": "23",
   },
   Token {
+    "id": "rightParen-)-14",
     "position": 14,
     "type": "rightParen",
     "value": ")",
@@ -100,21 +115,25 @@ Array [
 exports[`リグレッションテスト tokenize -123   -456 1`] = `
 Array [
   Token {
+    "id": "operator---0",
     "position": 0,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-123-1",
     "position": 1,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator---7",
     "position": 7,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -125,46 +144,55 @@ Array [
 exports[`リグレッションテスト tokenize -123*(-456+23) 1`] = `
 Array [
   Token {
+    "id": "operator---0",
     "position": 0,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-123-1",
     "position": 1,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-*-4",
     "position": 4,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "leftParen-(-5",
     "position": 5,
     "type": "leftParen",
     "value": "(",
   },
   Token {
+    "id": "operator---6",
     "position": 6,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-7",
     "position": 7,
     "type": "number",
     "value": "456",
   },
   Token {
+    "id": "operator-+-10",
     "position": 10,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-23-11",
     "position": 11,
     "type": "number",
     "value": "23",
   },
   Token {
+    "id": "rightParen-)-13",
     "position": 13,
     "type": "rightParen",
     "value": ")",
@@ -175,26 +203,31 @@ Array [
 exports[`リグレッションテスト tokenize -123--456 1`] = `
 Array [
   Token {
+    "id": "operator---0",
     "position": 0,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-123-1",
     "position": 1,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator---4",
     "position": 4,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "operator---5",
     "position": 5,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-6",
     "position": 6,
     "type": "number",
     "value": "456",
@@ -205,16 +238,19 @@ Array [
 exports[`リグレッションテスト tokenize 123   * 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-*-6",
     "position": 6,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -225,16 +261,19 @@ Array [
 exports[`リグレッションテスト tokenize 123   + 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-+-6",
     "position": 6,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -245,26 +284,31 @@ Array [
 exports[`リグレッションテスト tokenize 123   + 456*123 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-+-6",
     "position": 6,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
   },
   Token {
+    "id": "operator-*-11",
     "position": 11,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "number-123-12",
     "position": 12,
     "type": "number",
     "value": "123",
@@ -275,16 +319,19 @@ Array [
 exports[`リグレッションテスト tokenize 123   / 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-/-6",
     "position": 6,
     "type": "operator",
     "value": "/",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -295,16 +342,19 @@ Array [
 exports[`リグレッションテスト tokenize 123   - 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator---6",
     "position": 6,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -315,6 +365,7 @@ Array [
 exports[`リグレッションテスト tokenizeAsync    123    1`] = `
 Array [
   Token {
+    "id": "number-123-3",
     "position": 3,
     "type": "number",
     "value": "123",
@@ -325,6 +376,7 @@ Array [
 exports[`リグレッションテスト tokenizeAsync    123 1`] = `
 Array [
   Token {
+    "id": "number-123-3",
     "position": 3,
     "type": "number",
     "value": "123",
@@ -335,11 +387,13 @@ Array [
 exports[`リグレッションテスト tokenizeAsync    123 123 1`] = `
 Array [
   Token {
+    "id": "number-123-3",
     "position": 3,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "number-123-7",
     "position": 7,
     "type": "number",
     "value": "123",
@@ -350,56 +404,67 @@ Array [
 exports[`リグレッションテスト tokenizeAsync (12+32)*(45-23) 1`] = `
 Array [
   Token {
+    "id": "leftParen-(-0",
     "position": 0,
     "type": "leftParen",
     "value": "(",
   },
   Token {
+    "id": "number-12-1",
     "position": 1,
     "type": "number",
     "value": "12",
   },
   Token {
+    "id": "operator-+-3",
     "position": 3,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-32-4",
     "position": 4,
     "type": "number",
     "value": "32",
   },
   Token {
+    "id": "rightParen-)-6",
     "position": 6,
     "type": "rightParen",
     "value": ")",
   },
   Token {
+    "id": "operator-*-7",
     "position": 7,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "leftParen-(-8",
     "position": 8,
     "type": "leftParen",
     "value": "(",
   },
   Token {
+    "id": "number-45-9",
     "position": 9,
     "type": "number",
     "value": "45",
   },
   Token {
+    "id": "operator---11",
     "position": 11,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-23-12",
     "position": 12,
     "type": "number",
     "value": "23",
   },
   Token {
+    "id": "rightParen-)-14",
     "position": 14,
     "type": "rightParen",
     "value": ")",
@@ -410,21 +475,25 @@ Array [
 exports[`リグレッションテスト tokenizeAsync -123   -456 1`] = `
 Array [
   Token {
+    "id": "operator---0",
     "position": 0,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-123-1",
     "position": 1,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator---7",
     "position": 7,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -435,46 +504,55 @@ Array [
 exports[`リグレッションテスト tokenizeAsync -123*(-456+23) 1`] = `
 Array [
   Token {
+    "id": "operator---0",
     "position": 0,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-123-1",
     "position": 1,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-*-4",
     "position": 4,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "leftParen-(-5",
     "position": 5,
     "type": "leftParen",
     "value": "(",
   },
   Token {
+    "id": "operator---6",
     "position": 6,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-7",
     "position": 7,
     "type": "number",
     "value": "456",
   },
   Token {
+    "id": "operator-+-10",
     "position": 10,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-23-11",
     "position": 11,
     "type": "number",
     "value": "23",
   },
   Token {
+    "id": "rightParen-)-13",
     "position": 13,
     "type": "rightParen",
     "value": ")",
@@ -485,26 +563,31 @@ Array [
 exports[`リグレッションテスト tokenizeAsync -123--456 1`] = `
 Array [
   Token {
+    "id": "operator---0",
     "position": 0,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-123-1",
     "position": 1,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator---4",
     "position": 4,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "operator---5",
     "position": 5,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-6",
     "position": 6,
     "type": "number",
     "value": "456",
@@ -515,16 +598,19 @@ Array [
 exports[`リグレッションテスト tokenizeAsync 123   * 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-*-6",
     "position": 6,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -535,16 +621,19 @@ Array [
 exports[`リグレッションテスト tokenizeAsync 123   + 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-+-6",
     "position": 6,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -555,26 +644,31 @@ Array [
 exports[`リグレッションテスト tokenizeAsync 123   + 456*123 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-+-6",
     "position": 6,
     "type": "operator",
     "value": "+",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
   },
   Token {
+    "id": "operator-*-11",
     "position": 11,
     "type": "operator",
     "value": "*",
   },
   Token {
+    "id": "number-123-12",
     "position": 12,
     "type": "number",
     "value": "123",
@@ -585,16 +679,19 @@ Array [
 exports[`リグレッションテスト tokenizeAsync 123   / 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator-/-6",
     "position": 6,
     "type": "operator",
     "value": "/",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",
@@ -605,16 +702,19 @@ Array [
 exports[`リグレッションテスト tokenizeAsync 123   - 456 1`] = `
 Array [
   Token {
+    "id": "number-123-0",
     "position": 0,
     "type": "number",
     "value": "123",
   },
   Token {
+    "id": "operator---6",
     "position": 6,
     "type": "operator",
     "value": "-",
   },
   Token {
+    "id": "number-456-8",
     "position": 8,
     "type": "number",
     "value": "456",

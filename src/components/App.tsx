@@ -1,25 +1,40 @@
 import React from 'react';
 import './App.css';
 import { TokenizerPanel } from './TokenizerPanel';
-import { tokenizeAsync, Token } from '../lib/tokenizer';
-import { parseAsync } from '../lib/parser';
-import { ParserNode } from '../lib/parser/parser-node';
+import { tokenizeAsync, type Token } from '../lib/tokenizer';
+import { parseAsync, type ParserNode } from '../lib/parser';
+import { resolveAsync, type ResolveEventHandler, type OperateEventArg } from '../lib/resolver';
+
 import { ParserPanel } from './ParserPanel';
 
 function App() {
     const [expression, setExpression] = React.useState('');
     const [tokens, setTokens] = React.useState<Token[]>([]);
     const [parsedNode, setParsedNode] = React.useState<ParserNode | undefined>(undefined);
+    const [result, setResult] = React.useState<number>(0);
+    const [resolveProcess, setResolveProcess] = React.useState<string[]>([]);
     const [error, setError] = React.useState<string>('');
 
     function initialise() {
         setTokens([]);
         setParsedNode(undefined);
         setError('');
+        setResolveProcess([]);
     }
+
     React.useEffect(() => {
+        const process: string[] = [];
         // ステートを初期化する
         initialise();
+
+        const resolverEventHandler: ResolveEventHandler = (event, arg) => {
+            if (event === 'operate') {
+                const operateArg = arg as OperateEventArg;
+                const message = `${operateArg.left} ${operateArg.operator} ${operateArg.right} = ${operateArg.result}`;
+                console.log(message);
+                process.push(message);
+            }
+        };
 
         // input expressionの読み取り専用にする
         document.getElementById('expression')?.setAttribute('readonly', 'readonly');
@@ -36,14 +51,21 @@ function App() {
                 .then((parsedNode) => {
                     // 構文解析の結果をセットする
                     setParsedNode(parsedNode);
+                    return resolveAsync(parsedNode, resolverEventHandler);
+                })
+                .then((result) => {
+                    // 解決のプロセスをセットする
+                    setResolveProcess(process);
+                    // 解決の結果をセットする
+                    setResult(result);
+                })
+                .finally(() => {
                     // input expressionの読み取り専用を解除する
                     document.getElementById('expression')?.removeAttribute('readonly');
                 })
                 .catch((error) => {
                     // エラーの場合はエラーメッセージをセットする
                     setError(error.message);
-                    // input expressionの読み取り専用を解除する
-                    document.getElementById('expression')?.removeAttribute('readonly');
                 });
         }
     }, [expression]);
@@ -68,6 +90,20 @@ function App() {
                     <ParserPanel node={parsedNode} />
                 </div>
                 <div className="messagePanel">{error}</div>
+                <div className="resultProcess">
+                    <h2>計算過程</h2>
+                    <div>
+                        <ol>
+                            {resolveProcess.map((process, index) => (
+                                <li key={index}>{process}</li>
+                            ))}
+                        </ol>
+                    </div>
+                </div>
+                <div className="resultPanel">
+                    <h2>計算結果</h2>
+                    <div>{result}</div>
+                </div>
             </div>
         </div>
     );

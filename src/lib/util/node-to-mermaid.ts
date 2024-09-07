@@ -37,7 +37,7 @@ class ParseTreeRenderer {
         const singleNode = node as SingleNode;
 
         // 自身のノードを追加する
-        seed.push(`${nodeId}("${singleNode.value}")`);
+        seed.push(`${nodeId}("${singleNode.isNegative ? '-' : ''}${singleNode.value}")`);
 
         return seed;
     }
