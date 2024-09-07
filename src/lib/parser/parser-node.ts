@@ -8,8 +8,8 @@ export abstract class ParserNode {
     constructor(nodeType: NodeType) {
         this.nodeType = nodeType;
     }
-    public connectToTail(operatorToken: Token, nodeTobeConnected: ParserNode): BinaryNode {
-        return new BinaryNode(this, nodeTobeConnected, operatorToken.value);
+    public connectToTail(operatorToken: Token, nodeToBeConnected: ParserNode): BinaryNode {
+        return new BinaryNode(this, nodeToBeConnected, operatorToken.value);
     }
 
     public static connectTwoNodes(
@@ -50,17 +50,17 @@ export class BinaryNode extends ParserNode {
         this.operator = operator;
     }
 
-    public appendToRight(operator: string, nodeTobeAppended: ParserNode): this {
-        this.right = new BinaryNode(this.right, nodeTobeAppended, operator);
+    public appendToRight(operator: string, nodeToBeAppended: ParserNode): this {
+        this.right = new BinaryNode(this.right, nodeToBeAppended, operator);
         return this;
     }
 
-    public connectToTail(operatorToken: Token, nodeTobeConnected: ParserNode): BinaryNode {
+    public connectToTail(operatorToken: Token, nodeToBeConnected: ParserNode): BinaryNode {
         if (operatorToken.isSecondaryOperator) {
-            return new BinaryNode(this, nodeTobeConnected, operatorToken.value);
+            return new BinaryNode(this, nodeToBeConnected, operatorToken.value);
         } else {
             // 掛け算や割り算の場合は右の子に接続する
-            return this.appendToRight(operatorToken.value, nodeTobeConnected);
+            return this.appendToRight(operatorToken.value, nodeToBeConnected);
         }
     }
 }
