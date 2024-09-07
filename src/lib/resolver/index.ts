@@ -1,6 +1,7 @@
 import { parse, ParserNode } from '../parser';
 import { tokenize, type Token } from '../tokenizer';
-import { resolveNode, type ResolveEventHandler } from './node-resolver';
+import { resolveNode } from './node-resolver';
+import { type ResolveEventHandler } from './resolve-event-handler';
 
 export function resolve(expression: string, eventHandler?: ResolveEventHandler): number;
 export function resolve(tokens: Token[], eventHandler?: ResolveEventHandler): number;
@@ -40,4 +41,4 @@ export {
     type OperateEventArg,
     type ExecuteParenEventArg,
     type ResolveEventHandler,
-} from './node-resolver';
+} from './resolve-event-handler';
