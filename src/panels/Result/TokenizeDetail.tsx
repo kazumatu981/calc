@@ -1,11 +1,9 @@
 import { ProcessDetail } from './ProcessDetail';
 import { Token } from '../../lib/tokenizer';
 
-import { InputText } from 'primereact/inputtext';
 import { TokenizerPanel } from '../../components/TokenizerPanel';
 
 interface TokenizeDetailProps {
-    expression: string;
     tokens: Token[];
 }
 
@@ -26,11 +24,5 @@ const description = (
 );
 
 export function TokenizeDetail(prop: TokenizeDetailProps): JSX.Element {
-    return (
-        <ProcessDetail
-            from={<InputText value={prop.expression} readOnly={true} className="p-inputtext-lg" />}
-            to={<TokenizerPanel tokens={prop.tokens} />}
-            description={description}
-        />
-    );
+    return <ProcessDetail figure={<TokenizerPanel tokens={prop.tokens} />} description={description} />;
 }

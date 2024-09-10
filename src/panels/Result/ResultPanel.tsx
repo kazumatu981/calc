@@ -19,39 +19,51 @@ export interface ResultPanelProps {
     process: string[];
 }
 
+interface PagingButtonProps {
+    onPrevious?: () => void;
+    onNext?: () => void;
+}
+function PagingButton(props: PagingButtonProps): JSX.Element {
+    let containerClassName;
+    if (props.onNext && props.onPrevious) {
+        containerClassName = 'flex pt-4 justify-content-between';
+    } else if (props.onPrevious) {
+        containerClassName = 'flex pt-4 justify-content-start';
+    } else if (props.onNext) {
+        containerClassName = 'flex pt-4 justify-content-end';
+    }
+    return (
+        <div className={containerClassName}>
+            {props.onPrevious && (
+                <Button label="Back" severity="secondary" icon="pi pi-arrow-left" onClick={props.onPrevious} />
+            )}
+            {props.onNext && <Button label="Next" icon="pi pi-arrow-right" iconPos="right" onClick={props.onNext} />}
+        </div>
+    );
+}
+
 export function ResultPanel(args: ResultPanelProps): JSX.Element {
     const [activeStep, setActiveStep] = useState(0);
 
     return (
         <Stepper activeStep={activeStep}>
             <StepperPanel header="字句解析">
-                <div className="flex pt-4 justify-content-end">
-                    <Button label="Next" icon="pi pi-arrow-right" iconPos="right" onClick={() => setActiveStep(1)} />
+                <div className="flex flex-column gap-3">
+                    <PagingButton onNext={() => setActiveStep(1)} />
+                    <TokenizeDetail tokens={args.tokens} />
                 </div>
-                <TokenizeDetail expression={args.expression} tokens={args.tokens} />
             </StepperPanel>
             <StepperPanel header="構文解析">
-                <div className="flex pt-4 justify-content-between">
-                    <Button
-                        label="Back"
-                        severity="secondary"
-                        icon="pi pi-arrow-left"
-                        onClick={() => setActiveStep(0)}
-                    />
-                    <Button label="Next" icon="pi pi-arrow-right" iconPos="right" onClick={() => setActiveStep(2)} />
+                <div className="flex flex-column gap-3">
+                    <PagingButton onPrevious={() => setActiveStep(0)} onNext={() => setActiveStep(2)} />
+                    <ParseDetail parsedNode={args.parsedNode} />
                 </div>
-                <ParseDetail tokens={args.tokens} parsedNode={args.parsedNode} />
             </StepperPanel>
             <StepperPanel header="意味解析">
-                <div className="flex pt-4 justify-content-start">
-                    <Button
-                        label="Back"
-                        severity="secondary"
-                        icon="pi pi-arrow-left"
-                        onClick={() => setActiveStep(1)}
-                    />
+                <div className="flex flex-column gap-3">
+                    <PagingButton onPrevious={() => setActiveStep(1)} />
+                    <ExecuteDetail steps={args.process} />
                 </div>
-                <ExecuteDetail parsedNode={args.parsedNode} steps={args.process} />
             </StepperPanel>
         </Stepper>
     );

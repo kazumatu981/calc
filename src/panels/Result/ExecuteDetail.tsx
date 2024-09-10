@@ -3,7 +3,6 @@ import { ParserNode } from '../../lib/parser';
 import { ParserPanel } from '../../components/ParserPanel';
 
 interface ExecuteDetailProps {
-    parsedNode: ParserNode;
     steps: string[];
 }
 
@@ -22,11 +21,5 @@ const description = (
 
 export function ExecuteDetail(prop: ExecuteDetailProps): JSX.Element {
     const executeSteps = prop.steps.map((step, index) => <li key={index}>{step}</li>);
-    return (
-        <ProcessDetail
-            from={<ParserPanel parsedNode={prop.parsedNode} />}
-            to={<ol>{executeSteps}</ol>}
-            description={description}
-        />
-    );
+    return <ProcessDetail figure={<ol>{executeSteps}</ol>} description={description} />;
 }

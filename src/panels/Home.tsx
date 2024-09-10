@@ -4,26 +4,30 @@ import { Fieldset } from 'primereact/fieldset';
 import { InputText } from 'primereact/inputtext';
 import { parseAsync } from '../lib/parser';
 import { resolveAsync } from '../lib/resolver';
+import { ExpressionInput } from '../components/ExpressionInput';
 
 export function Home(): JSX.Element {
-    const [expression, setExpression] = useState<string>('');
-    const [errorString, setErrorString] = useState<string>('');
     const [result, setResult] = useState<string>('');
-    useEffect(() => {
-        setErrorString('');
-        setResult('');
-        parseAsync(expression).catch((e) => {
-            setErrorString(e.message);
-        });
-    }, [expression]);
+    const [errorString, setErrorString] = useState<string>('');
 
-    const onExecute = () => {
-        resolveAsync(expression)
+    const onValidate = (expression: string) => {
+        return new Promise<void>((_resolve, _reject) => {
+            parseAsync(expression)
+                .then(() => {
+                    _resolve();
+                })
+                .catch((e) => {
+                    _reject(e);
+                });
+        });
+    };
+    const onExecute = (_expression: string) => {
+        resolveAsync(_expression)
             .then((result) => {
-                setResult(`${expression} = ${result}`);
+                setResult(`${_expression} = ${result}`);
             })
             .catch((e) => {
-                setErrorString(e.message);
+                setResult(e.message);
             });
     };
 
@@ -40,32 +44,12 @@ export function Home(): JSX.Element {
                     <li>計算は、通常の四則演算の優先度が適用されます。</li>
                 </ul>
             </Fieldset>
-            <div className="flex flex-column gap-2">
-                <InputText
-                    id="expression"
-                    aria-describedby="expression-help"
-                    className="p-inputtext-lg"
-                    placeholder="数式を入力してください"
-                    onChange={(e) => setExpression(e.target.value)}
-                    value={expression}
-                />
-                <small id="expression-help" className="p-error">
-                    {errorString}
-                </small>
-            </div>
+
+            <>
+                <ExpressionInput validate={onValidate} execute={onExecute} />
+            </>
             <div>
-                {errorString === '' ? (
-                    <Button id="execute" label="計算の実行" icon="pi pi-calculator" onClick={onExecute} />
-                ) : (
-                    <></>
-                )}
-            </div>
-            <div>
-                {result !== '' ? (
-                    <InputText type="text" className="p-inputtext-lg" placeholder="計算結果" readOnly value={result} />
-                ) : (
-                    <></>
-                )}
+                <big>{result}</big>
             </div>
         </div>
     );

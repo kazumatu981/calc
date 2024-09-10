@@ -1,12 +1,9 @@
 import { ProcessDetail } from './ProcessDetail';
-import { Token } from '../../lib/tokenizer';
 import { ParserNode } from '../../lib/parser';
 
-import { TokenizerPanel } from '../../components/TokenizerPanel';
 import { ParserPanel } from '../../components/ParserPanel';
 
 interface ParseDetailProps {
-    tokens: Token[];
     parsedNode: ParserNode;
 }
 
@@ -31,11 +28,5 @@ const description = (
 );
 
 export function ParseDetail(prop: ParseDetailProps): JSX.Element {
-    return (
-        <ProcessDetail
-            from={<TokenizerPanel tokens={prop.tokens} />}
-            to={<ParserPanel parsedNode={prop.parsedNode} />}
-            description={description}
-        />
-    );
+    return <ProcessDetail figure={<ParserPanel parsedNode={prop.parsedNode} />} description={description} />;
 }
