@@ -19,7 +19,10 @@ function resolveSingleNode(node: SingleNode, eventHandler?: ResolveEventHandler)
         value *= -1;
     }
 
-    eventHandler('read_num', { result: value });
+    eventHandler('read_num', {
+        node: node,
+        result: value,
+    });
     return value;
 }
 
@@ -45,6 +48,7 @@ function resolveBinaryNode(node: BinaryNode, eventHandler?: ResolveEventHandler)
 
     const result = calculate(left, right);
     eventHandler!('operate', {
+        node: node,
         operator: node.operator,
         left,
         right,
@@ -57,6 +61,9 @@ function resolveBinaryNode(node: BinaryNode, eventHandler?: ResolveEventHandler)
 function resolveParenNode(node: ParenNode, eventHandler?: ResolveEventHandler): number {
     eventHandler = eventHandler || (() => {});
     const result = resolveNode(node.childRoot, eventHandler);
-    eventHandler!('execute_paren', { result });
+    eventHandler!('execute_paren', {
+        node: node,
+        result,
+    });
     return result;
 }
