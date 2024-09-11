@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import { Button } from 'primereact/button';
-import { InputText } from 'primereact/inputtext';
-
 import { tokenizeAsync } from '../lib/tokenizer';
 import { parseAsync } from '../lib/parser';
 import { resolveAsync, ResolveEventHandler, OperateEventArg } from '../lib/resolver';
 import { ResultPanel, ResultPanelProps } from '../panels/Result/ResultPanel';
+import { ExpressionInput } from '../components/ExpressionInput';
 
 async function calculate(expression: string): Promise<ResultPanelProps> {
     const process: string[] = [];
@@ -29,49 +27,38 @@ export function OverView(): JSX.Element {
     const [errorString, setErrorString] = useState<string>('');
     const [result, setResult] = useState<ResultPanelProps | undefined>(undefined);
 
-    useEffect(() => {
-        setErrorString('');
-        setResult(undefined);
-        parseAsync(expression).catch((e) => {
-            setErrorString(e.message);
+    const onValidate = (_expression: string) => {
+        return new Promise<void>((_resolve, _reject) => {
+            parseAsync(_expression)
+                .then(() => {
+                    _resolve();
+                })
+                .catch((e) => {
+                    _reject(e);
+                });
         });
-    }, [expression]);
-
-    const onExecute = () => {
-        setResult(undefined);
-
-        calculate(expression)
-            .then((result) => {
-                setResult(result);
-            })
-            .catch((e) => {
-                setErrorString(e.message);
-            });
     };
-
+    const onExecute = (_expression: string) => {
+        return new Promise<void>((_resolve, _reject) => {
+            calculate(_expression)
+                .then((result) => {
+                    setExpression(_expression);
+                    setResult(result);
+                })
+                .catch((e) => {
+                    setErrorString(e.message);
+                })
+                .finally(() => {
+                    _resolve();
+                });
+        });
+    };
     return (
         <div>
             <h2>処理概要</h2>
-            <div className="flex flex-column gap-2">
-                <InputText
-                    id="expression"
-                    aria-describedby="expression-help"
-                    className="p-inputtext-lg"
-                    placeholder="数式を入力してください"
-                    onChange={(e) => setExpression(e.target.value)}
-                    value={expression}
-                />
-                <small id="expression-help" className="p-error">
-                    {errorString}
-                </small>
-            </div>
-            <div>
-                {errorString === '' ? (
-                    <Button id="execute" label="計算の実行" icon="pi pi-calculator" onClick={onExecute} />
-                ) : (
-                    <></>
-                )}
-            </div>
+            <>
+                <ExpressionInput validate={onValidate} execute={onExecute} />
+            </>
             <div>
                 {result !== undefined ? (
                     <ResultPanel

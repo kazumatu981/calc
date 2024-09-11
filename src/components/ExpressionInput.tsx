@@ -1,15 +1,16 @@
-import { useEffect, useState } from 'react';
+import { FormEventHandler, MouseEventHandler, useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 
 export interface ExpressionInputProps {
     validate?: (expression: string) => Promise<void>;
-    execute?: (expression: string) => void;
+    execute?: (expression: string) => Promise<void>;
 }
 export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
     const [expression, setExpression] = useState<string>('');
     const [errorString, setErrorString] = useState<string>('');
     const [validating, setValidating] = useState<boolean>(false);
+    const [executing, setExecuting] = useState<boolean>(false);
 
     useEffect(() => {
         setErrorString('');
@@ -25,11 +26,33 @@ export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
         }
     }, [expression, prop]);
 
+    const onInputHandler: FormEventHandler<HTMLInputElement> = (e) => {
+        const _expression: string = e.currentTarget.value;
+        setExpression(_expression);
+        if (prop && prop.validate) {
+            setValidating(true);
+            prop.validate(_expression)
+                .catch((e) => {
+                    setErrorString(e.message);
+                })
+                .finally(() => {
+                    setValidating(false);
+                });
+        }
+    };
+    const onExecuteHandler: MouseEventHandler = () => {
+        if (prop && prop.execute) {
+            setExecuting(true);
+            prop.execute(expression).finally(() => {
+                setExecuting(false);
+            });
+        }
+    };
     return (
         <div className="flex flex-row">
             <div className=" flex-grow-1 m-2">
                 <div className="flex flex-column">
-                    <InputText value={expression} onChange={(e) => setExpression(e.target.value)} />
+                    <InputText value={expression} onChange={onInputHandler} readOnly={validating || executing} />
                     <small className="p-error">{errorString}</small>
                 </div>
             </div>
@@ -38,8 +61,9 @@ export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
                     <Button
                         className="m-2"
                         label="実行"
-                        onClick={() => prop.execute!(expression)}
-                        disabled={errorString !== ''}
+                        icon="pi pi-calculator"
+                        onClick={onExecuteHandler}
+                        disabled={errorString !== '' || validating || executing}
                     />
                 ) : (
                     <></>

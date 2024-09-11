@@ -1,14 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Button } from 'primereact/button';
+import { useState } from 'react';
 import { Fieldset } from 'primereact/fieldset';
-import { InputText } from 'primereact/inputtext';
 import { parseAsync } from '../lib/parser';
 import { resolveAsync } from '../lib/resolver';
 import { ExpressionInput } from '../components/ExpressionInput';
 
 export function Home(): JSX.Element {
     const [result, setResult] = useState<string>('');
-    const [errorString, setErrorString] = useState<string>('');
 
     const onValidate = (expression: string) => {
         return new Promise<void>((_resolve, _reject) => {
@@ -22,13 +19,16 @@ export function Home(): JSX.Element {
         });
     };
     const onExecute = (_expression: string) => {
-        resolveAsync(_expression)
-            .then((result) => {
-                setResult(`${_expression} = ${result}`);
-            })
-            .catch((e) => {
-                setResult(e.message);
-            });
+        return new Promise<void>((_resolve, _reject) => {
+            resolveAsync(_expression)
+                .then((result) => {
+                    setResult(`${_expression} = ${result}`);
+                    _resolve();
+                })
+                .catch((e) => {
+                    setResult(e.message);
+                });
+        });
     };
 
     return (
@@ -45,9 +45,7 @@ export function Home(): JSX.Element {
                 </ul>
             </Fieldset>
 
-            <>
-                <ExpressionInput validate={onValidate} execute={onExecute} />
-            </>
+            <ExpressionInput validate={onValidate} execute={onExecute} />
             <div>
                 <big>{result}</big>
             </div>
