@@ -101,14 +101,14 @@ export class Parser {
             throw new ParserError('no-token');
         }
         if (this.currentToken.isNumber) {
-            node = new SingleNode(this.currentToken.value);
+            node = new SingleNode(this.currentToken.value, false, [this.currentToken]);
             this._currentIndex++;
         } else if (this.currentToken.isNegativeSign) {
             if (this.nextToken === undefined) {
                 throw new ParserError('no-token');
             }
             if (this.nextToken.isNumber) {
-                node = new SingleNode(this.nextToken.value, true);
+                node = new SingleNode(this.nextToken.value, true, [this.currentToken, this.nextToken]);
             } else {
                 throw new ParserError('unexpected-token');
             }
@@ -120,13 +120,16 @@ export class Parser {
     }
 
     private _readAsParenNode(): ParenNode {
+        const parenStartToken = this.currentToken as Token;
         const childParser = new Parser(this._tokens, {
             startIndex: this._currentIndex + 1,
             mode: 'paren',
         });
         const childRoot = childParser.parse();
+        const parenEndToken = childParser.currentToken as Token;
         this._currentIndex = childParser._currentIndex + 1;
-        return new ParenNode(childRoot);
+
+        return new ParenNode(childRoot, [parenStartToken, parenEndToken]);
     }
     private _safeReadTokenAt(index: number): Token | undefined {
         if (index < this._tokens.length) {
