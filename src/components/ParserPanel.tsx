@@ -5,21 +5,21 @@ import { type ParserNode } from '../lib/parser/parser-node';
 import { drawTree } from '../lib/util/node-to-mermaid';
 import { sha256Hash } from '../lib/util/sha256hash';
 
-export function ParserPanel({ node }: { node: ParserNode | undefined }) {
+export function ParserPanel({ parsedNode }: { parsedNode: ParserNode | undefined }) {
     const ref = useRef<HTMLDivElement>(null);
     const [src, setSrc] = useState<string | undefined>(undefined);
     const [key, setKey] = useState<string>('');
 
     useEffect(() => {
         console.log('update mermaid');
-        if (node) {
-            const mermaidSrc = drawTree(node);
+        if (parsedNode) {
+            const mermaidSrc = drawTree(parsedNode);
             sha256Hash(mermaidSrc).then((hash) => {
                 setSrc(mermaidSrc);
                 setKey(hash);
             });
         }
-    }, [node]);
+    }, [parsedNode]);
 
     useEffect(() => {
         if (src) {
@@ -27,7 +27,7 @@ export function ParserPanel({ node }: { node: ParserNode | undefined }) {
         }
     }, [src]);
 
-    return src && node ? (
+    return src && parsedNode ? (
         <div className="mermaid" ref={ref} key={key}>
             {src}
         </div>
