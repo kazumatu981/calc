@@ -5,11 +5,13 @@ export type NodeType = 'single' | 'binary' | 'paren';
 
 export abstract class ParserNode {
     nodeType: NodeType;
-    constructor(nodeType: NodeType) {
+    tokens: Token[];
+    constructor(nodeType: NodeType, tokens: Token[]) {
         this.nodeType = nodeType;
+        this.tokens = tokens;
     }
     public connectToTail(operatorToken: Token, nodeToBeConnected: ParserNode): BinaryNode {
-        return new BinaryNode(this, nodeToBeConnected, operatorToken.value);
+        return new BinaryNode(this, nodeToBeConnected, operatorToken);
     }
 
     public static connectTwoNodes(
@@ -32,8 +34,8 @@ export abstract class ParserNode {
 export class SingleNode extends ParserNode {
     isNegative: boolean;
     value: string;
-    constructor(value: string, isNegative: boolean | undefined = false) {
-        super('single');
+    constructor(value: string, isNegative: boolean, tokens: Token[]) {
+        super('single', tokens);
         this.value = value;
         this.isNegative = isNegative;
     }
@@ -43,32 +45,32 @@ export class BinaryNode extends ParserNode {
     public left: ParserNode;
     public right: ParserNode;
     operator: string;
-    constructor(left: ParserNode, right: ParserNode, operator: string) {
-        super('binary');
+    constructor(left: ParserNode, right: ParserNode, operatorToken: Token) {
+        super('binary', [operatorToken]);
         this.left = left;
         this.right = right;
-        this.operator = operator;
+        this.operator = operatorToken.value;
     }
 
-    public appendToRight(operator: string, nodeToBeAppended: ParserNode): this {
-        this.right = new BinaryNode(this.right, nodeToBeAppended, operator);
+    public appendToRight(operatorToken: Token, nodeToBeAppended: ParserNode): this {
+        this.right = new BinaryNode(this.right, nodeToBeAppended, operatorToken);
         return this;
     }
 
     public connectToTail(operatorToken: Token, nodeToBeConnected: ParserNode): BinaryNode {
         if (operatorToken.isSecondaryOperator) {
-            return new BinaryNode(this, nodeToBeConnected, operatorToken.value);
+            return new BinaryNode(this, nodeToBeConnected, operatorToken);
         } else {
             // 掛け算や割り算の場合は右の子に接続する
-            return this.appendToRight(operatorToken.value, nodeToBeConnected);
+            return this.appendToRight(operatorToken, nodeToBeConnected);
         }
     }
 }
 
 export class ParenNode extends ParserNode {
     public childRoot: ParserNode;
-    constructor(childRoot: ParserNode) {
-        super('paren');
+    constructor(childRoot: ParserNode, tokens: Token[]) {
+        super('paren', tokens);
         this.childRoot = childRoot;
     }
 }
