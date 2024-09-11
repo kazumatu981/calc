@@ -6,6 +6,7 @@ import { Button } from 'primereact/button';
 
 import { Token } from '../../lib/tokenizer';
 import { ParserNode } from '../../lib/parser';
+import { type OperateEventArg } from '../../lib/resolver';
 
 import { TokenizeDetail } from './TokenizeDetail';
 import { ParseDetail } from './ParseDetail';
@@ -16,7 +17,7 @@ export interface ResultPanelProps {
     tokens: Token[];
     parsedNode: ParserNode;
     result: number | undefined;
-    process: string[];
+    process: OperateEventArg[];
 }
 
 interface PagingButtonProps {

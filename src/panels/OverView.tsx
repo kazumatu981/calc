@@ -7,13 +7,11 @@ import { ResultPanel, ResultPanelProps } from '../panels/Result/ResultPanel';
 import { ExpressionInput } from '../components/ExpressionInput';
 
 async function calculate(expression: string): Promise<ResultPanelProps> {
-    const process: string[] = [];
+    const process: OperateEventArg[] = [];
     const onProcess: ResolveEventHandler = (event, arg) => {
         if (event === 'operate') {
             const operateEventArg = arg as OperateEventArg;
-            process.push(
-                `${operateEventArg.left} ${operateEventArg.operator} ${operateEventArg.right} = ${operateEventArg.result}`,
-            );
+            process.push(arg as OperateEventArg);
         }
     };
     const tokens = await tokenizeAsync(expression);
@@ -23,7 +21,6 @@ async function calculate(expression: string): Promise<ResultPanelProps> {
 }
 
 export function OverView(): JSX.Element {
-    const [expression, setExpression] = useState<string>('');
     const [errorString, setErrorString] = useState<string>('');
     const [result, setResult] = useState<ResultPanelProps | undefined>(undefined);
 
@@ -42,7 +39,6 @@ export function OverView(): JSX.Element {
         return new Promise<void>((_resolve, _reject) => {
             calculate(_expression)
                 .then((result) => {
-                    setExpression(_expression);
                     setResult(result);
                 })
                 .catch((e) => {
