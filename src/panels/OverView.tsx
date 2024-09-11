@@ -12,7 +12,7 @@ async function calculate(expression: string): Promise<ResultPanelProps> {
         if (event === 'operate') {
             const operateEventArg = arg as OperateEventArg;
             process.push(
-                `${operateEventArg.operator}(${operateEventArg.left}, ${operateEventArg.right}) = ${operateEventArg.result}`,
+                `${operateEventArg.left} ${operateEventArg.operator} ${operateEventArg.right} = ${operateEventArg.result}`,
             );
         }
     };
@@ -57,7 +57,7 @@ export function OverView(): JSX.Element {
         <div>
             <h2>処理概要</h2>
             <>
-                <ExpressionInput validate={onValidate} execute={onExecute} />
+                <ExpressionInput validate={onValidate} execute={onExecute} showPositionIndex={true} />
             </>
             <div>
                 {result !== undefined ? (

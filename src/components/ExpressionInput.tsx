@@ -1,10 +1,12 @@
 import { FormEventHandler, MouseEventHandler, useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { PositionIndex } from './PositionIndex';
 
 export interface ExpressionInputProps {
     validate?: (expression: string) => Promise<void>;
     execute?: (expression: string) => Promise<void>;
+    showPositionIndex?: boolean;
 }
 export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
     const [expression, setExpression] = useState<string>('');
@@ -49,26 +51,29 @@ export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
         }
     };
     return (
-        <div className="flex flex-row">
-            <div className=" flex-grow-1 m-2">
-                <div className="flex flex-column">
-                    <InputText value={expression} onChange={onInputHandler} readOnly={validating || executing} />
-                    <small className="p-error">{errorString}</small>
+        <div className="flex flex-column">
+            <div className="flex flex-row">
+                <div className=" flex-grow-1 m-2">
+                    <div className="flex flex-column">
+                        <InputText value={expression} onChange={onInputHandler} readOnly={validating || executing} />
+                        <small className="p-error">{errorString}</small>
+                    </div>
+                </div>
+                <div>
+                    {prop.execute ? (
+                        <Button
+                            className="m-2"
+                            label="実行"
+                            icon="pi pi-calculator"
+                            onClick={onExecuteHandler}
+                            disabled={errorString !== '' || validating || executing}
+                        />
+                    ) : (
+                        <></>
+                    )}
                 </div>
             </div>
-            <div>
-                {prop.execute ? (
-                    <Button
-                        className="m-2"
-                        label="実行"
-                        icon="pi pi-calculator"
-                        onClick={onExecuteHandler}
-                        disabled={errorString !== '' || validating || executing}
-                    />
-                ) : (
-                    <></>
-                )}
-            </div>
+            {prop.showPositionIndex ? <PositionIndex expression={expression} /> : <></>}
         </div>
     );
 }

@@ -11,25 +11,29 @@ import { OverView } from './panels/OverView';
 function App() {
     const startContent = (
         <React.Fragment>
-            <Button
-                aria-label="Home"
-                icon="pi pi-fw pi-home"
-                onClick={() => {
-                    window.location.href = '/home';
-                }}
-            />
-            <Button
-                aria-label="overview"
-                icon="pi pi-fw pi-file"
-                onClick={() => (window.location.href = '/overview')}
-            />
+            <div className="flex flex-row">
+                <div className="flex flex-row m-2">
+                    <Button
+                        aria-label="Home"
+                        icon="pi pi-fw pi-home"
+                        onClick={() => {
+                            window.location.href = '/home';
+                        }}
+                    />
+                    <Button
+                        aria-label="overview"
+                        icon="pi pi-fw pi-file"
+                        onClick={() => (window.location.href = '/overview')}
+                    />
+                </div>
+            </div>
         </React.Fragment>
     );
 
     const centerContent = (
-        <React.Fragment>
-            <Button label="ステップ実行" icon="" onClick={() => (window.location.href = '/step')} />
-        </React.Fragment>
+        <div className="flex flex-row m-2">
+            <h1 className="m-2">Calculator</h1>
+        </div>
     );
 
     const endContent = (

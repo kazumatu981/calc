@@ -2,6 +2,7 @@ interface ProcessDetailProps {
     figure: JSX.Element;
     description: JSX.Element;
 }
+
 export function ProcessDetail(args: ProcessDetailProps): JSX.Element {
     return (
         <div className="flex flex-column gap-2">

@@ -1,11 +1,25 @@
 import { ProcessDetail } from './ProcessDetail';
-import { ParserNode } from '../../lib/parser';
-import { ParserPanel } from '../../components/ParserPanel';
 
 interface ExecuteDetailProps {
     steps: string[];
 }
 
+function ExecuteSteps(prop: ExecuteDetailProps): JSX.Element {
+    return (
+        <div className="flex flex-column">
+            {prop.steps.map((step, index) => (
+                <div className="flex flex-row gap-2">
+                    <div className="flex align-items-center justify-content-center w-2rem h-2rem bg-primary font-bold border-round m-2">
+                        {index}
+                    </div>
+                    <div className="flex align-items-center justify-content-center h-2rem p-2 m-2 border-round border-1">
+                        {step}
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
+}
 const description = (
     <>
         <h2>意味解析</h2>
@@ -20,6 +34,5 @@ const description = (
 );
 
 export function ExecuteDetail(prop: ExecuteDetailProps): JSX.Element {
-    const executeSteps = prop.steps.map((step, index) => <li key={index}>{step}</li>);
-    return <ProcessDetail figure={<ol>{executeSteps}</ol>} description={description} />;
+    return <ProcessDetail figure={<ExecuteSteps steps={prop.steps} />} description={description} />;
 }
