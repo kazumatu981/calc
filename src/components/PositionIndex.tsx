@@ -15,7 +15,7 @@ export function PositionIndex({ expression }: { expression: string }): JSX.Eleme
         return (
             <div className="flex flex-column border-1">
                 <div className="flex align-items-center justify-content-center border-bottom-1 p-1 w-2rem">
-                    {charItem}
+                    {charItem === ' ' ? <>&nbsp;</> : charItem}
                 </div>
                 <div className="flex align-items-center justify-content-center border-bottom-1 p-1 bg-gray-300">
                     {index}
