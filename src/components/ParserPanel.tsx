@@ -1,12 +1,19 @@
-import { useEffect, useRef, useState } from 'react';
-import mermaid from 'mermaid';
 import { BinaryNode, ParenNode, type ParserNode, SingleNode } from '../lib/parser/parser-node';
-import { Tree } from 'primereact/tree';
-import { TreeNode } from 'primereact/treenode';
-import { drawTree } from '../lib/util/node-to-mermaid';
-import { sha256Hash } from '../lib/util/sha256hash';
+import { OrganizationChart, OrganizationChartNodeData } from 'primereact/organizationchart';
+import './ParserPanel.css';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
-function parserNodeToTreeNode(parserNode: ParserNode): TreeNode {
+library.add(faLocationDot);
+
+interface ParsedChardNodeData extends OrganizationChartNodeData {
+    id: string;
+    key: string;
+    data: ParserNode;
+}
+
+function parserNodeToTreeNode(parserNode: ParserNode): ParsedChardNodeData {
     if (parserNode.nodeType === 'paren') {
         const node = parserNode as ParenNode;
         return {
@@ -15,6 +22,7 @@ function parserNodeToTreeNode(parserNode: ParserNode): TreeNode {
             label: '()',
             data: node,
             children: [parserNodeToTreeNode(node.childRoot)],
+            expanded: true,
         };
     } else if (parserNode.nodeType === 'binary') {
         const node = parserNode as BinaryNode;
@@ -24,6 +32,7 @@ function parserNodeToTreeNode(parserNode: ParserNode): TreeNode {
             label: node.operator,
             data: node,
             children: [parserNodeToTreeNode(node.left), parserNodeToTreeNode(node.right)],
+            expanded: true,
         };
     } else if (parserNode.nodeType === 'single') {
         const node = parserNode as SingleNode;
@@ -32,12 +41,13 @@ function parserNodeToTreeNode(parserNode: ParserNode): TreeNode {
             key: node.tokens[0].id,
             label: node.isNegative ? `-${node.value}` : node.value,
             data: node,
+            expanded: true,
         };
     }
     throw new Error('not implemented');
 }
 
-function nodeTemplate(node: TreeNode): JSX.Element {
+function nodeTemplate(node: OrganizationChartNodeData): JSX.Element {
     const classNames = [
         'flex',
         'flex-row',
@@ -49,10 +59,11 @@ function nodeTemplate(node: TreeNode): JSX.Element {
         'justify-content-center',
         'shadow-7',
     ];
-    if ((node.data as ParserNode).nodeType === 'binary') {
+    const data = (node as ParsedChardNodeData).data as ParserNode;
+    if (data.nodeType === 'binary') {
         classNames.push('bg-teal-100');
     }
-    if ((node.data as ParserNode).nodeType === 'paren') {
+    if (data.nodeType === 'paren') {
         classNames.push('bg-orange-100');
     }
     return (
@@ -60,8 +71,8 @@ function nodeTemplate(node: TreeNode): JSX.Element {
             <div className="text-xl">{node.label}</div>
             <div className="ml-3">
                 <small>
-                    <i className="pi pi-map-marker text-xs"></i>
-                    {(node.data as ParserNode).tokens[0].position}
+                    <FontAwesomeIcon icon={faLocationDot} size="xs" />
+                    {data.tokens[0].position}
                 </small>
             </div>
         </div>
@@ -69,5 +80,9 @@ function nodeTemplate(node: TreeNode): JSX.Element {
 }
 
 export function ParserPanel({ parsedNode }: { parsedNode: ParserNode | undefined }) {
-    return parsedNode ? <Tree value={[parserNodeToTreeNode(parsedNode)]} nodeTemplate={nodeTemplate} /> : <></>;
+    return parsedNode ? (
+        <OrganizationChart value={[parserNodeToTreeNode(parsedNode)]} nodeTemplate={nodeTemplate} />
+    ) : (
+        <></>
+    );
 }

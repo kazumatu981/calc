@@ -1,6 +1,10 @@
 import { ProcessDetail } from './ProcessDetail';
 import { OperateEventArg } from '../../lib/resolver';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 
+library.add(faLocationDot);
 interface ExecuteDetailProps {
     steps: OperateEventArg[];
 }
@@ -14,7 +18,7 @@ function ExecuteSteps(prop: ExecuteDetailProps): JSX.Element {
                         {index}
                     </div>
                     <div className="flex align-items-center justify-content-center h-2rem w-3rem p-2 m-2 border-round border-1 bg-gray-300">
-                        <i className="pi pi-map-marker text-xs"></i>
+                        <FontAwesomeIcon icon={faLocationDot} size="xs" />
                         <>{step.node.tokens[0].position}</>
                     </div>
                     <div className="flex align-items-center justify-content-center h-2rem p-2 m-2">

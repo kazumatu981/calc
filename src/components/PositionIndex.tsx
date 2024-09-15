@@ -1,3 +1,9 @@
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faLocationDot);
+
 export function PositionIndex({ expression }: { expression: string }): JSX.Element {
     const header =
         expression.length === 0 ? (
@@ -6,7 +12,7 @@ export function PositionIndex({ expression }: { expression: string }): JSX.Eleme
             <div className="flex flex-column border-1">
                 <div className="flex align-items-center justify-content-center border-bottom-1 p-1">{'character'}</div>
                 <div className="flex align-items-center justify-content-center border-bottom-1 p-1 bg-gray-300">
-                    <i className="pi pi-map-marker text-xs"></i>
+                    <FontAwesomeIcon icon={faLocationDot} size="xs" />
                     {'position'}
                 </div>
             </div>
