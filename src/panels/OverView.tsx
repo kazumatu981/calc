@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { tokenizeAsync } from '../lib/tokenizer';
 import { parseAsync } from '../lib/parser';
@@ -10,7 +10,6 @@ async function calculate(expression: string): Promise<ResultPanelProps> {
     const process: OperateEventArg[] = [];
     const onProcess: ResolveEventHandler = (event, arg) => {
         if (event === 'operate') {
-            const operateEventArg = arg as OperateEventArg;
             process.push(arg as OperateEventArg);
         }
     };
@@ -67,6 +66,9 @@ export function OverView(): JSX.Element {
                 ) : (
                     <></>
                 )}
+            </div>
+            <div>
+                <>{errorString}</>
             </div>
         </div>
     );
