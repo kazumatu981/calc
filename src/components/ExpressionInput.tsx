@@ -2,6 +2,11 @@ import { FormEventHandler, MouseEventHandler, useEffect, useState } from 'react'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { PositionIndex } from './PositionIndex';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalculator } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCalculator);
 
 export interface ExpressionInputProps {
     validate?: (expression: string) => Promise<void>;
@@ -64,7 +69,7 @@ export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
                         <Button
                             className="m-2"
                             label="実行"
-                            icon="pi pi-calculator"
+                            icon={<FontAwesomeIcon icon={faCalculator} style={{ marginRight: '0.5rem' }} />}
                             onClick={onExecuteHandler}
                             disabled={errorString !== '' || validating || executing}
                         />

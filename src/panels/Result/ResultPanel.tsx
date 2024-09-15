@@ -6,17 +6,19 @@ import { Button } from 'primereact/button';
 
 import { Token } from '../../lib/tokenizer';
 import { ParserNode } from '../../lib/parser';
+import { type OperateEventArg } from '../../lib/resolver';
 
 import { TokenizeDetail } from './TokenizeDetail';
 import { ParseDetail } from './ParseDetail';
 import { ExecuteDetail } from './ExecuteDetail';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 export interface ResultPanelProps {
     expression: string;
     tokens: Token[];
     parsedNode: ParserNode;
     result: number | undefined;
-    process: string[];
+    process: OperateEventArg[];
 }
 
 interface PagingButtonProps {
@@ -35,9 +37,9 @@ function PagingButton(props: PagingButtonProps): JSX.Element {
     return (
         <div className={containerClassName}>
             {props.onPrevious && (
-                <Button label="Back" severity="secondary" icon="pi pi-arrow-left" onClick={props.onPrevious} />
+                <Button severity="secondary" icon={<FontAwesomeIcon icon={faArrowLeft} />} onClick={props.onPrevious} />
             )}
-            {props.onNext && <Button label="Next" icon="pi pi-arrow-right" iconPos="right" onClick={props.onNext} />}
+            {props.onNext && <Button icon={<FontAwesomeIcon icon={faArrowRight} />} onClick={props.onNext} />}
         </div>
     );
 }

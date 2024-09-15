@@ -2,11 +2,16 @@ import React from 'react';
 import { BrowserRouter, Route, Navigate, Routes } from 'react-router-dom';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome, faBook, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 import './App.css';
 
 import { Home } from './panels/Home';
 import { OverView } from './panels/OverView';
+
+library.add(faHome, faBook, faInfoCircle);
 
 function App() {
     const startContent = (
@@ -15,14 +20,14 @@ function App() {
                 <div className="flex flex-row m-2">
                     <Button
                         aria-label="Home"
-                        icon="pi pi-fw pi-home"
+                        icon={<FontAwesomeIcon icon={faHome} />}
                         onClick={() => {
                             window.location.href = '/home';
                         }}
                     />
                     <Button
                         aria-label="overview"
-                        icon="pi pi-fw pi-file"
+                        icon={<FontAwesomeIcon icon={faBook} />}
                         onClick={() => (window.location.href = '/overview')}
                     />
                 </div>
@@ -40,7 +45,7 @@ function App() {
         <React.Fragment>
             <Button
                 aria-label="about"
-                icon="pi pi-fw pi-info-circle"
+                icon={<FontAwesomeIcon icon={faInfoCircle} />}
                 onClick={() => (window.location.href = '/about')}
             />
         </React.Fragment>
