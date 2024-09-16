@@ -1,0 +1,19 @@
+.p-organizationchart .p-organizationchart-node-content {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.p-organizationchart .p-organizationchart-line-down {
+    border-left: 3px dotted #aaa;
+}
+
+.p-organizationchart .p-organizationchart-line-top {
+    border-top: 3px dotted #aaa;
+}
+
+.p-organizationchart .p-organizationchart-line-right {
+    border-left: 2px dotted #aaa;
+}
+.p-organizationchart .p-organizationchart-line-left {
+    border-right: 2px dotted #aaa;
+}

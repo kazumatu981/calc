@@ -49,10 +49,10 @@ export class Tokenizer {
             return this._readOperatorToken();
         } else if (CharUtil.isLeftParen(this.expression, this.currentIndex)) {
             // 左括弧
-            return this._readParanToken('leftParen');
+            return this._readParenToken('leftParen');
         } else if (CharUtil.isRightParen(this.expression, this.currentIndex)) {
             // 右括弧
-            return this._readParanToken('rightParen');
+            return this._readParenToken('rightParen');
         } else {
             // 予期せぬ文字を検出した
             throw new TokenizerError('unknown-character', this.currentIndex);
@@ -84,7 +84,7 @@ export class Tokenizer {
         return new Token('operator', this.expression.charAt(startIndex), startIndex);
     }
 
-    private _readParanToken(startEnd: 'leftParen' | 'rightParen'): Token {
+    private _readParenToken(startEnd: 'leftParen' | 'rightParen'): Token {
         const startIndex = this.currentIndex;
         this.currentIndex++;
         return new Token(startEnd as TokenType, this.expression.charAt(startIndex), startIndex);

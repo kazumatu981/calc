@@ -4,6 +4,14 @@ exports[`リグレッションテスト parse from string parse    123    1`] = 
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -12,6 +20,14 @@ exports[`リグレッションテスト parse from string parse    123 1`] = `
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -23,6 +39,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-12-1",
+            "position": 1,
+            "type": "number",
+            "value": "12",
+          },
+        ],
         "value": "12",
       },
       "nodeType": "binary",
@@ -30,10 +54,40 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-32-4",
+            "position": 4,
+            "type": "number",
+            "value": "32",
+          },
+        ],
         "value": "32",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-3",
+          "position": 3,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-0",
+        "position": 0,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-6",
+        "position": 6,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
   "nodeType": "binary",
   "operator": "*",
@@ -42,6 +96,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-45-9",
+            "position": 9,
+            "type": "number",
+            "value": "45",
+          },
+        ],
         "value": "45",
       },
       "nodeType": "binary",
@@ -49,11 +111,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-12",
+            "position": 12,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator---11",
+          "position": 11,
+          "type": "operator",
+          "value": "-",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-8",
+        "position": 8,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-14",
+        "position": 14,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-7",
+      "position": 7,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -62,6 +162,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -69,8 +183,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---7",
+      "position": 7,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -79,6 +209,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -88,6 +232,20 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": true,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "operator---6",
+            "position": 6,
+            "type": "operator",
+            "value": "-",
+          },
+          Token {
+            "id": "number-456-7",
+            "position": 7,
+            "type": "number",
+            "value": "456",
+          },
+        ],
         "value": "456",
       },
       "nodeType": "binary",
@@ -95,11 +253,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-11",
+            "position": 11,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-10",
+          "position": 10,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-5",
+        "position": 5,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-13",
+        "position": 13,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-4",
+      "position": 4,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -108,6 +304,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -115,8 +325,30 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---5",
+        "position": 5,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-456-6",
+        "position": 6,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---4",
+      "position": 4,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -125,6 +357,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -132,8 +372,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-6",
+      "position": 6,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -142,6 +398,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -149,8 +413,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -159,6 +439,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -167,6 +455,14 @@ BinaryNode {
     "left": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-456-8",
+          "position": 8,
+          "type": "number",
+          "value": "456",
+        },
+      ],
       "value": "456",
     },
     "nodeType": "binary",
@@ -174,9 +470,33 @@ BinaryNode {
     "right": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-123-12",
+          "position": 12,
+          "type": "number",
+          "value": "123",
+        },
+      ],
       "value": "123",
     },
+    "tokens": Array [
+      Token {
+        "id": "operator-*-11",
+        "position": 11,
+        "type": "operator",
+        "value": "*",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -185,6 +505,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -192,8 +520,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-/-6",
+      "position": 6,
+      "type": "operator",
+      "value": "/",
+    },
+  ],
 }
 `;
 
@@ -202,6 +546,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -209,8 +561,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---6",
+      "position": 6,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -218,6 +586,14 @@ exports[`リグレッションテスト parse from tokens parse    123    1`] = 
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -226,6 +602,14 @@ exports[`リグレッションテスト parse from tokens parse    123 1`] = `
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -237,6 +621,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-12-1",
+            "position": 1,
+            "type": "number",
+            "value": "12",
+          },
+        ],
         "value": "12",
       },
       "nodeType": "binary",
@@ -244,10 +636,40 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-32-4",
+            "position": 4,
+            "type": "number",
+            "value": "32",
+          },
+        ],
         "value": "32",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-3",
+          "position": 3,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-0",
+        "position": 0,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-6",
+        "position": 6,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
   "nodeType": "binary",
   "operator": "*",
@@ -256,6 +678,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-45-9",
+            "position": 9,
+            "type": "number",
+            "value": "45",
+          },
+        ],
         "value": "45",
       },
       "nodeType": "binary",
@@ -263,11 +693,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-12",
+            "position": 12,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator---11",
+          "position": 11,
+          "type": "operator",
+          "value": "-",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-8",
+        "position": 8,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-14",
+        "position": 14,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-7",
+      "position": 7,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -276,6 +744,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -283,8 +765,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---7",
+      "position": 7,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -293,6 +791,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -302,6 +814,20 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": true,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "operator---6",
+            "position": 6,
+            "type": "operator",
+            "value": "-",
+          },
+          Token {
+            "id": "number-456-7",
+            "position": 7,
+            "type": "number",
+            "value": "456",
+          },
+        ],
         "value": "456",
       },
       "nodeType": "binary",
@@ -309,11 +835,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-11",
+            "position": 11,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-10",
+          "position": 10,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-5",
+        "position": 5,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-13",
+        "position": 13,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-4",
+      "position": 4,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -322,6 +886,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -329,8 +907,30 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---5",
+        "position": 5,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-456-6",
+        "position": 6,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---4",
+      "position": 4,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -339,6 +939,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -346,8 +954,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-6",
+      "position": 6,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -356,6 +980,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -363,8 +995,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -373,6 +1021,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -381,6 +1037,14 @@ BinaryNode {
     "left": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-456-8",
+          "position": 8,
+          "type": "number",
+          "value": "456",
+        },
+      ],
       "value": "456",
     },
     "nodeType": "binary",
@@ -388,9 +1052,33 @@ BinaryNode {
     "right": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-123-12",
+          "position": 12,
+          "type": "number",
+          "value": "123",
+        },
+      ],
       "value": "123",
     },
+    "tokens": Array [
+      Token {
+        "id": "operator-*-11",
+        "position": 11,
+        "type": "operator",
+        "value": "*",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -399,6 +1087,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -406,8 +1102,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-/-6",
+      "position": 6,
+      "type": "operator",
+      "value": "/",
+    },
+  ],
 }
 `;
 
@@ -416,6 +1128,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -423,8 +1143,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---6",
+      "position": 6,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -432,6 +1168,14 @@ exports[`リグレッションテスト parseAsync from string parseAsync    123
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -440,6 +1184,14 @@ exports[`リグレッションテスト parseAsync from string parseAsync    123
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -451,6 +1203,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-12-1",
+            "position": 1,
+            "type": "number",
+            "value": "12",
+          },
+        ],
         "value": "12",
       },
       "nodeType": "binary",
@@ -458,10 +1218,40 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-32-4",
+            "position": 4,
+            "type": "number",
+            "value": "32",
+          },
+        ],
         "value": "32",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-3",
+          "position": 3,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-0",
+        "position": 0,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-6",
+        "position": 6,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
   "nodeType": "binary",
   "operator": "*",
@@ -470,6 +1260,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-45-9",
+            "position": 9,
+            "type": "number",
+            "value": "45",
+          },
+        ],
         "value": "45",
       },
       "nodeType": "binary",
@@ -477,11 +1275,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-12",
+            "position": 12,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator---11",
+          "position": 11,
+          "type": "operator",
+          "value": "-",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-8",
+        "position": 8,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-14",
+        "position": 14,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-7",
+      "position": 7,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -490,6 +1326,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -497,8 +1347,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---7",
+      "position": 7,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -507,6 +1373,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -516,6 +1396,20 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": true,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "operator---6",
+            "position": 6,
+            "type": "operator",
+            "value": "-",
+          },
+          Token {
+            "id": "number-456-7",
+            "position": 7,
+            "type": "number",
+            "value": "456",
+          },
+        ],
         "value": "456",
       },
       "nodeType": "binary",
@@ -523,11 +1417,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-11",
+            "position": 11,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-10",
+          "position": 10,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-5",
+        "position": 5,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-13",
+        "position": 13,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-4",
+      "position": 4,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -536,6 +1468,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -543,8 +1489,30 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---5",
+        "position": 5,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-456-6",
+        "position": 6,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---4",
+      "position": 4,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -553,6 +1521,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -560,8 +1536,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-6",
+      "position": 6,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -570,6 +1562,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -577,8 +1577,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -587,6 +1603,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -595,6 +1619,14 @@ BinaryNode {
     "left": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-456-8",
+          "position": 8,
+          "type": "number",
+          "value": "456",
+        },
+      ],
       "value": "456",
     },
     "nodeType": "binary",
@@ -602,9 +1634,33 @@ BinaryNode {
     "right": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-123-12",
+          "position": 12,
+          "type": "number",
+          "value": "123",
+        },
+      ],
       "value": "123",
     },
+    "tokens": Array [
+      Token {
+        "id": "operator-*-11",
+        "position": 11,
+        "type": "operator",
+        "value": "*",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -613,6 +1669,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -620,8 +1684,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-/-6",
+      "position": 6,
+      "type": "operator",
+      "value": "/",
+    },
+  ],
 }
 `;
 
@@ -630,6 +1710,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -637,8 +1725,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---6",
+      "position": 6,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -646,6 +1750,14 @@ exports[`リグレッションテスト parseAsync from tokens parseAsync    123
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -654,6 +1766,14 @@ exports[`リグレッションテスト parseAsync from tokens parseAsync    123
 SingleNode {
   "isNegative": false,
   "nodeType": "single",
+  "tokens": Array [
+    Token {
+      "id": "number-123-3",
+      "position": 3,
+      "type": "number",
+      "value": "123",
+    },
+  ],
   "value": "123",
 }
 `;
@@ -665,6 +1785,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-12-1",
+            "position": 1,
+            "type": "number",
+            "value": "12",
+          },
+        ],
         "value": "12",
       },
       "nodeType": "binary",
@@ -672,10 +1800,40 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-32-4",
+            "position": 4,
+            "type": "number",
+            "value": "32",
+          },
+        ],
         "value": "32",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-3",
+          "position": 3,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-0",
+        "position": 0,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-6",
+        "position": 6,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
   "nodeType": "binary",
   "operator": "*",
@@ -684,6 +1842,14 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-45-9",
+            "position": 9,
+            "type": "number",
+            "value": "45",
+          },
+        ],
         "value": "45",
       },
       "nodeType": "binary",
@@ -691,11 +1857,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-12",
+            "position": 12,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator---11",
+          "position": 11,
+          "type": "operator",
+          "value": "-",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-8",
+        "position": 8,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-14",
+        "position": 14,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-7",
+      "position": 7,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -704,6 +1908,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -711,8 +1929,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---7",
+      "position": 7,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -721,6 +1955,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -730,6 +1978,20 @@ BinaryNode {
       "left": SingleNode {
         "isNegative": true,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "operator---6",
+            "position": 6,
+            "type": "operator",
+            "value": "-",
+          },
+          Token {
+            "id": "number-456-7",
+            "position": 7,
+            "type": "number",
+            "value": "456",
+          },
+        ],
         "value": "456",
       },
       "nodeType": "binary",
@@ -737,11 +1999,49 @@ BinaryNode {
       "right": SingleNode {
         "isNegative": false,
         "nodeType": "single",
+        "tokens": Array [
+          Token {
+            "id": "number-23-11",
+            "position": 11,
+            "type": "number",
+            "value": "23",
+          },
+        ],
         "value": "23",
       },
+      "tokens": Array [
+        Token {
+          "id": "operator-+-10",
+          "position": 10,
+          "type": "operator",
+          "value": "+",
+        },
+      ],
     },
     "nodeType": "paren",
+    "tokens": Array [
+      Token {
+        "id": "leftParen-(-5",
+        "position": 5,
+        "type": "leftParen",
+        "value": "(",
+      },
+      Token {
+        "id": "rightParen-)-13",
+        "position": 13,
+        "type": "rightParen",
+        "value": ")",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-4",
+      "position": 4,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -750,6 +2050,20 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---0",
+        "position": 0,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-123-1",
+        "position": 1,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -757,8 +2071,30 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": true,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "operator---5",
+        "position": 5,
+        "type": "operator",
+        "value": "-",
+      },
+      Token {
+        "id": "number-456-6",
+        "position": 6,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---4",
+      "position": 4,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
 
@@ -767,6 +2103,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -774,8 +2118,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-*-6",
+      "position": 6,
+      "type": "operator",
+      "value": "*",
+    },
+  ],
 }
 `;
 
@@ -784,6 +2144,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -791,8 +2159,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -801,6 +2185,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -809,6 +2201,14 @@ BinaryNode {
     "left": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-456-8",
+          "position": 8,
+          "type": "number",
+          "value": "456",
+        },
+      ],
       "value": "456",
     },
     "nodeType": "binary",
@@ -816,9 +2216,33 @@ BinaryNode {
     "right": SingleNode {
       "isNegative": false,
       "nodeType": "single",
+      "tokens": Array [
+        Token {
+          "id": "number-123-12",
+          "position": 12,
+          "type": "number",
+          "value": "123",
+        },
+      ],
       "value": "123",
     },
+    "tokens": Array [
+      Token {
+        "id": "operator-*-11",
+        "position": 11,
+        "type": "operator",
+        "value": "*",
+      },
+    ],
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-+-6",
+      "position": 6,
+      "type": "operator",
+      "value": "+",
+    },
+  ],
 }
 `;
 
@@ -827,6 +2251,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -834,8 +2266,24 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator-/-6",
+      "position": 6,
+      "type": "operator",
+      "value": "/",
+    },
+  ],
 }
 `;
 
@@ -844,6 +2292,14 @@ BinaryNode {
   "left": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-123-0",
+        "position": 0,
+        "type": "number",
+        "value": "123",
+      },
+    ],
     "value": "123",
   },
   "nodeType": "binary",
@@ -851,7 +2307,23 @@ BinaryNode {
   "right": SingleNode {
     "isNegative": false,
     "nodeType": "single",
+    "tokens": Array [
+      Token {
+        "id": "number-456-8",
+        "position": 8,
+        "type": "number",
+        "value": "456",
+      },
+    ],
     "value": "456",
   },
+  "tokens": Array [
+    Token {
+      "id": "operator---6",
+      "position": 6,
+      "type": "operator",
+      "value": "-",
+    },
+  ],
 }
 `;
