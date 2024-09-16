@@ -1,8 +1,5 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faLocationDot);
 
 export function PositionViewer({ expression }: { expression: string }): JSX.Element {
     const header =

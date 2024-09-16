@@ -2,11 +2,8 @@ import { FormEventHandler, MouseEventHandler, useEffect, useState } from 'react'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { PositionViewer } from './PositionViewer';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faCalculator);
 
 export interface ExpressionInputProps {
     validate?: (expression: string) => Promise<void>;

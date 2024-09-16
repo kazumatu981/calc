@@ -1,11 +1,8 @@
 import { BinaryNode, ParenNode, type ParserNode, SingleNode } from '../../lib/parser/parser-node';
 import { OrganizationChart, OrganizationChartNodeData } from 'primereact/organizationchart';
 import './ParserNodesViewer.css';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faLocationDot);
 
 interface ParsedChardNodeData extends OrganizationChartNodeData {
     id: string;

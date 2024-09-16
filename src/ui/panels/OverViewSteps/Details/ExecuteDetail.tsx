@@ -1,9 +1,6 @@
 import { OperateEventArg } from '../../../../lib/resolver';
-import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faLocationDot);
 
 interface ProcessDetailProps {
     figure: JSX.Element;
