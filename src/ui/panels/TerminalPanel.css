@@ -1,0 +1,8 @@
+.p-terminal {
+    background-color: var(--surface-800);
+    color: var(--surface-100);
+}
+
+.p-terminal .p-terminal-prompt {
+    color: var(--primary-500);
+}
