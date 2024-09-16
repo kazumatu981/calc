@@ -1,7 +1,7 @@
 import { FormEventHandler, MouseEventHandler, useEffect, useState } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { PositionIndex } from './PositionIndex';
+import { PositionViewer } from './PositionViewer';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalculator } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,7 @@ library.add(faCalculator);
 export interface ExpressionInputProps {
     validate?: (expression: string) => Promise<void>;
     execute?: (expression: string) => Promise<void>;
-    showPositionIndex?: boolean;
+    showPositionView?: boolean;
 }
 export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
     const [expression, setExpression] = useState<string>('');
@@ -78,7 +78,7 @@ export function ExpressionInput(prop: ExpressionInputProps): JSX.Element {
                     )}
                 </div>
             </div>
-            {prop.showPositionIndex ? <PositionIndex expression={expression} /> : <></>}
+            {prop.showPositionView ? <PositionViewer expression={expression} /> : <></>}
         </div>
     );
 }

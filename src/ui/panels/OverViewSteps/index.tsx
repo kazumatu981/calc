@@ -4,15 +4,15 @@ import { Stepper } from 'primereact/stepper';
 import { StepperPanel } from 'primereact/stepperpanel';
 import { Button } from 'primereact/button';
 
-import { Token } from '../../lib/tokenizer';
-import { ParserNode } from '../../lib/parser';
-import { type OperateEventArg } from '../../lib/resolver';
-
-import { TokenizeDetail } from './TokenizeDetail';
-import { ParseDetail } from './ParseDetail';
-import { ExecuteDetail } from './ExecuteDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+import { Token } from '../../../lib/tokenizer';
+import { ParserNode } from '../../../lib/parser';
+import { type OperateEventArg } from '../../../lib/resolver';
+
+import { TokenizeDetail, ParseDetail, ExecuteDetail } from './Details';
+
 export interface ResultPanelProps {
     expression: string;
     tokens: Token[];
@@ -44,7 +44,7 @@ function PagingButton(props: PagingButtonProps): JSX.Element {
     );
 }
 
-export function ResultPanel(args: ResultPanelProps): JSX.Element {
+export function OverViewSteps(args: ResultPanelProps): JSX.Element {
     const [activeStep, setActiveStep] = useState(0);
 
     return (
