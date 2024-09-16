@@ -19,7 +19,7 @@ async function calculate(expression: string): Promise<ResultPanelProps> {
     return { expression, tokens, parsedNode, result, process };
 }
 
-export function OverView(): JSX.Element {
+export function OverViewPanel(): JSX.Element {
     const [errorString, setErrorString] = useState<string>('');
     const [result, setResult] = useState<ResultPanelProps | undefined>(undefined);
 

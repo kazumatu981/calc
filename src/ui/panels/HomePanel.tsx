@@ -4,7 +4,7 @@ import { parseAsync } from '../../lib/parser';
 import { resolveAsync } from '../../lib/resolver';
 import { ExpressionInput } from '../components/ExpressionInput';
 
-export function Home(): JSX.Element {
+export function HomePanel(): JSX.Element {
     const [result, setResult] = useState<string>('');
 
     const onValidate = (expression: string) => {
