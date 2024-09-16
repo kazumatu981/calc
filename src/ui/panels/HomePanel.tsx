@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Fieldset } from 'primereact/fieldset';
-import { parseAsync } from '../lib/parser';
-import { resolveAsync } from '../lib/resolver';
+import { parseAsync } from '../../lib/parser';
+import { resolveAsync } from '../../lib/resolver';
 import { ExpressionInput } from '../components/ExpressionInput';
 
-export function Home(): JSX.Element {
+export function HomePanel(): JSX.Element {
     const [result, setResult] = useState<string>('');
 
     const onValidate = (expression: string) => {

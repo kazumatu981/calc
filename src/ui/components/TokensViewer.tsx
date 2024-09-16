@@ -1,9 +1,6 @@
-import { Token } from '../lib/tokenizer';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { Token } from '../../lib/tokenizer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faLocationDot);
 
 function TokenItem({ token }: { token: Token }) {
     const classNames = [
@@ -41,7 +38,7 @@ function TokenItem({ token }: { token: Token }) {
     );
 }
 
-export function TokenizerPanel({ tokens }: { tokens: Token[] }) {
+export function TokensViewer({ tokens }: { tokens: Token[] }) {
     return tokens.length === 0 ? (
         <></>
     ) : (

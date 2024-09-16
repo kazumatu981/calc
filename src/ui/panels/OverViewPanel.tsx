@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
-import { tokenizeAsync } from '../lib/tokenizer';
-import { parseAsync } from '../lib/parser';
-import { resolveAsync, ResolveEventHandler, OperateEventArg } from '../lib/resolver';
-import { ResultPanel, ResultPanelProps } from '../panels/Result/ResultPanel';
+import { tokenizeAsync } from '../../lib/tokenizer';
+import { parseAsync } from '../../lib/parser';
+import { resolveAsync, ResolveEventHandler, OperateEventArg } from '../../lib/resolver';
+import { OverViewSteps, ResultPanelProps } from './OverViewSteps';
 import { ExpressionInput } from '../components/ExpressionInput';
 
 async function calculate(expression: string): Promise<ResultPanelProps> {
@@ -19,7 +19,7 @@ async function calculate(expression: string): Promise<ResultPanelProps> {
     return { expression, tokens, parsedNode, result, process };
 }
 
-export function OverView(): JSX.Element {
+export function OverViewPanel(): JSX.Element {
     const [errorString, setErrorString] = useState<string>('');
     const [result, setResult] = useState<ResultPanelProps | undefined>(undefined);
 
@@ -52,11 +52,11 @@ export function OverView(): JSX.Element {
         <div>
             <h2>処理概要</h2>
             <>
-                <ExpressionInput validate={onValidate} execute={onExecute} showPositionIndex={true} />
+                <ExpressionInput validate={onValidate} execute={onExecute} showPositionView={true} />
             </>
             <div>
                 {result !== undefined ? (
-                    <ResultPanel
+                    <OverViewSteps
                         expression={result.expression}
                         tokens={result.tokens}
                         parsedNode={result.parsedNode}

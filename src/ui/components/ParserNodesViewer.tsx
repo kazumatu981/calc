@@ -1,11 +1,8 @@
-import { BinaryNode, ParenNode, type ParserNode, SingleNode } from '../lib/parser/parser-node';
+import { BinaryNode, ParenNode, type ParserNode, SingleNode } from '../../lib/parser/parser-node';
 import { OrganizationChart, OrganizationChartNodeData } from 'primereact/organizationchart';
-import './ParserPanel.css';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import './ParserNodesViewer.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
-
-library.add(faLocationDot);
 
 interface ParsedChardNodeData extends OrganizationChartNodeData {
     id: string;
@@ -79,7 +76,7 @@ function nodeTemplate(node: OrganizationChartNodeData): JSX.Element {
     );
 }
 
-export function ParserPanel({ parsedNode }: { parsedNode: ParserNode | undefined }) {
+export function ParserNodesViewer({ parsedNode }: { parsedNode: ParserNode | undefined }) {
     return parsedNode ? (
         <OrganizationChart value={[parserNodeToTreeNode(parsedNode)]} nodeTemplate={nodeTemplate} />
     ) : (

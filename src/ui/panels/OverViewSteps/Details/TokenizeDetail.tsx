@@ -1,7 +1,7 @@
 import { ProcessDetail } from './ProcessDetail';
-import { Token } from '../../lib/tokenizer';
+import { Token } from '../../../../lib/tokenizer';
 
-import { TokenizerPanel } from '../../components/TokenizerPanel';
+import { TokensViewer } from '../../../components/TokensViewer';
 
 interface TokenizeDetailProps {
     tokens: Token[];
@@ -24,5 +24,5 @@ const description = (
 );
 
 export function TokenizeDetail(prop: TokenizeDetailProps): JSX.Element {
-    return <ProcessDetail figure={<TokenizerPanel tokens={prop.tokens} />} description={description} />;
+    return <ProcessDetail figure={<TokensViewer tokens={prop.tokens} />} description={description} />;
 }
