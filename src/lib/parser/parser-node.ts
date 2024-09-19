@@ -29,6 +29,7 @@ export abstract class ParserNode {
             return node1.connectToTail(operatorToken, node2);
         }
     }
+    abstract toString(): string;
 }
 
 export class SingleNode extends ParserNode {
@@ -38,6 +39,14 @@ export class SingleNode extends ParserNode {
         super('single', tokens);
         this.value = value;
         this.isNegative = isNegative;
+    }
+
+    public toString(): string {
+        if (this.isNegative) {
+            return `-${this.value}`;
+        } else {
+            return this.value;
+        }
     }
 }
 
@@ -65,6 +74,10 @@ export class BinaryNode extends ParserNode {
             return this.appendToRight(operatorToken, nodeToBeConnected);
         }
     }
+
+    public toString(): string {
+        return `(${this.left.toString()} ${this.operator} ${this.right.toString()})`;
+    }
 }
 
 export class ParenNode extends ParserNode {
@@ -72,5 +85,9 @@ export class ParenNode extends ParserNode {
     constructor(childRoot: ParserNode, tokens: Token[]) {
         super('paren', tokens);
         this.childRoot = childRoot;
+    }
+
+    public toString(): string {
+        return `(${this.childRoot.toString()})`;
     }
 }
