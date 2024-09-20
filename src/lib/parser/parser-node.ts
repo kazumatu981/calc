@@ -76,7 +76,7 @@ export class BinaryNode extends ParserNode {
     }
 
     public toString(): string {
-        return `(${this.left.toString()} ${this.operator} ${this.right.toString()})`;
+        return `${this.left.toString()} ${this.operator} ${this.right.toString()}`;
     }
 }
 
