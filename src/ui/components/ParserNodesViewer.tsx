@@ -65,12 +65,17 @@ function nodeTemplate(node: OrganizationChartNodeData): JSX.Element {
     }
     return (
         <div className={classNames.join(' ')}>
-            <div className="text-xl">{node.label}</div>
-            <div className="ml-3">
-                <small>
-                    <FontAwesomeIcon icon={faLocationDot} size="xs" />
-                    {data.tokens[0].position}
-                </small>
+            <div>
+                <div className="flex flex-row justify-content-center">
+                    <div className="text-2xl">{node.label}</div>
+                </div>
+                <div className="flex flex-row text-xs">
+                    <div className="mr-2 bg-primary border-round p-1">
+                        <FontAwesomeIcon icon={faLocationDot} />
+                        {data.tokens[0].position}
+                    </div>
+                    <div className="p-1">{data.toString()}</div>
+                </div>
             </div>
         </div>
     );

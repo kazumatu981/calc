@@ -9,7 +9,7 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 import { Token } from '../../../lib/tokenizer';
 import { ParserNode } from '../../../lib/parser';
-import { type OperateEventArg } from '../../../lib/resolver';
+import { type ResolveEventArg } from '../../../lib/resolver';
 
 import { TokenizeDetail, ParseDetail, ExecuteDetail } from './Details';
 
@@ -18,7 +18,7 @@ export interface ResultPanelProps {
     tokens: Token[];
     parsedNode: ParserNode;
     result: number | undefined;
-    process: OperateEventArg[];
+    process: ResolveEventArg[];
 }
 
 interface PagingButtonProps {

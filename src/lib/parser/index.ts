@@ -6,6 +6,11 @@ export { ParserNode, SingleNode, BinaryNode, ParenNode, NodeType };
 
 export async function parseAsync(tokens: Token[]): Promise<ParserNode>;
 export async function parseAsync(expression: string): Promise<ParserNode>;
+/**
+ * 数式文字列または字句から、構文木を作成する（非同期インタフェース）
+ * @param args 数式文字列あるいは字句配列
+ * @returns 構文木
+ */
 export async function parseAsync(args: string | Token[]): Promise<ParserNode> {
     if (typeof args === 'string') {
         return new Promise<ParserNode>((resolve, reject) => {
@@ -29,6 +34,11 @@ export async function parseAsync(args: string | Token[]): Promise<ParserNode> {
 
 export function parse(tokens: Token[]): ParserNode;
 export function parse(expression: string): ParserNode;
+/**
+ * 数式文字列または字句から、構文木を作成する
+ * @param args 数式文字列あるいは字句配列
+ * @returns 構文木
+ */
 export function parse(args: string | Token[]): ParserNode {
     if (typeof args === 'string') {
         return new Parser(tokenize(args)).parse();
