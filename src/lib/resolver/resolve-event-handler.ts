@@ -1,23 +1,27 @@
 import { type ParserNode } from '../parser/parser-node';
 export type ResolveEvent = 'operate' | 'read_num' | 'execute_paren';
-interface EventArgBase {
+
+export interface ResolveEventArg {
+    /**
+     * ノード
+     */
     node: ParserNode;
-}
-export interface OperateEventArg extends EventArgBase {
-    operator: string;
-    left: number;
-    right: number;
+    /**
+     * 計算結果
+     */
     result: number;
-}
-export interface ReadNumEventArg extends EventArgBase {
-    result: number;
+    /**
+     * 左の項
+     */
+    left?: number;
+    /**
+     * 右の項
+     */
+    right?: number;
+    /**
+     * 演算子
+     */
+    operator?: string;
 }
 
-export interface ExecuteParenEventArg extends EventArgBase {
-    result: number;
-}
-
-export type ResolveEventHandler = (
-    event: ResolveEvent,
-    arg: OperateEventArg | ReadNumEventArg | ExecuteParenEventArg,
-) => void;
+export type ResolveEventHandler = (event: ResolveEvent, arg: ResolveEventArg) => void;

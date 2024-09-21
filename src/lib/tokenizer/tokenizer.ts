@@ -59,6 +59,9 @@ export class Tokenizer {
         }
     }
 
+    /**
+     * 空白文字をスキップする
+     */
     private _skipSpaces(): void {
         while (
             this.currentIndex < this.expression.length &&
@@ -68,6 +71,10 @@ export class Tokenizer {
         }
     }
 
+    /**
+     * 数字文字列としてTokenを切り出す。
+     * @returns 切り出した字句
+     */
     private _readNumberToken(): Token {
         let value = '';
         const startIndex = this.currentIndex;
@@ -78,12 +85,21 @@ export class Tokenizer {
         return new Token('number', value, startIndex);
     }
 
+    /**
+     * 演算子文字列としてTokenを切り出す。
+     * @returns 切り出した字句
+     */
     private _readOperatorToken(): Token {
         const startIndex = this.currentIndex;
         this.currentIndex++;
         return new Token('operator', this.expression.charAt(startIndex), startIndex);
     }
 
+    /**
+     * 括弧文字列としてTokenを切り出す。
+     * @param startEnd 括弧の開始または終了を表す文字
+     * @returns 切り出した字句
+     */
     private _readParenToken(startEnd: 'leftParen' | 'rightParen'): Token {
         const startIndex = this.currentIndex;
         this.currentIndex++;

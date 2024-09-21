@@ -2,15 +2,15 @@ import { useState } from 'react';
 
 import { tokenizeAsync } from '../../lib/tokenizer';
 import { parseAsync } from '../../lib/parser';
-import { resolveAsync, ResolveEventHandler, OperateEventArg } from '../../lib/resolver';
+import { resolveAsync, ResolveEventHandler, type ResolveEventArg } from '../../lib/resolver';
 import { OverViewSteps, ResultPanelProps } from './OverViewSteps';
 import { ExpressionInput } from '../components/ExpressionInput';
 
 async function calculate(expression: string): Promise<ResultPanelProps> {
-    const process: OperateEventArg[] = [];
+    const process: ResolveEventArg[] = [];
     const onProcess: ResolveEventHandler = (event, arg) => {
         if (event === 'operate') {
-            process.push(arg as OperateEventArg);
+            process.push(arg as ResolveEventArg);
         }
     };
     const tokens = await tokenizeAsync(expression);
