@@ -20,8 +20,17 @@ const MessageDictionary: Record<ErrorCodes, string> = {
 };
 
 class CalcErrorBase extends Error {
+    /**
+     * エラーが発生したモジュール名
+     */
     public readonly moduleName: ModuleName;
+    /**
+     * エラーコード
+     */
     public readonly code: ErrorCodes;
+    /**
+     * エラーの補足メッセージ
+     */
     public readonly appendixMessage?: string;
     public constructor(moduleName: ModuleName, code: ErrorCodes, appendixMessage?: string) {
         const message: string = MessageDictionary[code] ?? MessageDictionary['unknown-error'];
@@ -33,6 +42,9 @@ class CalcErrorBase extends Error {
 }
 
 export class TokenizerError extends CalcErrorBase {
+    /**
+     * トークンの位置(何文字目で検出したか)
+     */
     public readonly position: number;
     public constructor(code: ErrorCodes, position: number, appendixMessage?: string) {
         super('tokenizer', code, appendixMessage);
