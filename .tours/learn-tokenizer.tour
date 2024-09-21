@@ -1,0 +1,15 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "learn-tokenizer",
+  "steps": [
+    {
+      "title": "Introduction",
+      "description": "## Tokenizer を理解しよう\r\n\r\nTokenizerは、字句解析処理と呼ばれ文字列から意味のある最小単位の単語を切り出す処理のことを言います。\r\n今回は、四則演算を含む数式なので、数字、演算子、括弧などの種類のトークンを切り出すことになります。"
+    },
+    {
+      "file": "../../../../../../CodeTour",
+      "description": "## 字句解析を理解しよう\r\n",
+      "line": 1
+    }
+  ]
+}
