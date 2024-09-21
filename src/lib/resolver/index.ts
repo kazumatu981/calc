@@ -47,10 +47,4 @@ export function resolveAsync(args: string | Token[] | ParserNode, eventHandler?:
     });
 }
 
-export {
-    type ResolveEvent,
-    type ReadNumEventArg,
-    type OperateEventArg,
-    type ExecuteParenEventArg,
-    type ResolveEventHandler,
-} from './resolve-event-handler';
+export { type ResolveEvent, type ResolveEventArg, type ResolveEventHandler } from './resolve-event-handler';
