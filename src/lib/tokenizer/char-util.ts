@@ -33,6 +33,16 @@ export class CharUtil {
     }
 
     /**
+     * 左括弧か右括弧かどうかを判定する
+     * @param s 対象文字列
+     * @param pos 対象文字の位置
+     * @returns 左括弧か右括弧かどうかを表す真偽値
+     */
+    public static isParen(s: string, pos: number): boolean {
+        return CharUtil.isLeftParen(s, pos) || CharUtil.isRightParen(s, pos);
+    }
+
+    /**
      * 左括弧かどうかを判定する
      * @param s 対象文字列
      * @param pos 対象文字の位置
