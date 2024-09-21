@@ -1,15 +1,56 @@
 {
   "$schema": "https://aka.ms/codetour-schema",
-  "title": "learn-tokenizer",
+  "title": "字句解析(tokenizer)の理解",
   "steps": [
     {
-      "title": "Introduction",
-      "description": "## Tokenizer を理解しよう\r\n\r\nTokenizerは、字句解析処理と呼ばれ文字列から意味のある最小単位の単語を切り出す処理のことを言います。\r\n今回は、四則演算を含む数式なので、数字、演算子、括弧などの種類のトークンを切り出すことになります。"
+      "file": "src/lib/tokenizer/index.ts",
+      "description": "## 字句解析を理解しよう\r\n\r\n字句解析は、数式を分析して意味のある単語に分解する処理です。\r\n文字列(`string`)を受け取って、字句の配列(`Token[]`)を返却します。\r\n",
+      "line": 26
     },
     {
-      "file": "../../../../../../CodeTour",
-      "description": "## 字句解析を理解しよう\r\n",
-      "line": 1
+      "file": "src/lib/tokenizer/token.ts",
+      "description": "## `Token` の種類\r\n\r\n`Token`には次の４種類です。\r\n\r\n| 種類 | 日本語名 |意味 |\r\n| --- | --- | ---- |\r\n| `'number'` | 数字 | `0`--`9`からなる文字列です。 |\r\n| `'operator'` | 演算子 | `+`,`-`,`*`,`/`の四則演算の演算子です。 |\r\n| `'leftParen'` | 左括弧 | 優先度の高い演算を意味する括弧のスタート文字 `(` です。 |\r\n| `'rightParen'` | 右括弧 | 括弧の終了文字 `)` です。 |",
+      "line": 4
+    },
+    {
+      "file": "src/lib/tokenizer/token.ts",
+      "description": "## `Token` の属性(プロパティ)\r\n\r\n`Token` にいくつかの属性がありますが、主要なものは、\r\n\r\n* `type` - トークンの種類\r\n* `value` - トークンの文字列\r\n\r\nです。",
+      "line": 9
+    },
+    {
+      "file": "src/lib/tokenizer/tokenizer.ts",
+      "description": "## 字句解析本体\r\n\r\nそれでは、字句解析の本体を見てみます。",
+      "line": 5
+    },
+    {
+      "file": "src/lib/tokenizer/tokenizer.ts",
+      "description": "## メインループ処理\r\n\r\nこれがメインのループ処理です。\r\n\r\n* `currentIndex` は文字列内の何番目の文字を見ているかを示します。\r\n*　`Token` を切り出し(`_readNextToken`)したら ローカル変数で宣言した(tokens)の末尾に追加していきます。\r\n* これ以上切り出すことができない場合、処理を終了します。\r\n* また、`currentIndex` が文字列の長さ(`expression.length`)を超えたら処理を終了します。\r\n* 最後に切り出した配列 `tokens` を返却します。",
+      "line": 16
+    },
+    {
+      "file": "src/lib/tokenizer/tokenizer.ts",
+      "description": "## `Token`の切り出し本体\r\n\r\n* まず、スペースが続く間は読み飛ばします(`_skipSpaces()`)。\r\n* 現在の位置(`currentIndex`)が末尾に到達していたら切り出せなかったことを意味する `undefined` を返却します。\r\n* 現在の位置の文字が数字(`isDigit()`)の場合は数字文字列を切り出します(`_readNumberToken()`)。\r\n* 現在の位置の文字が演算子(`isOperator()`)の場合は演算子文字列を切り出します(`_readOperatorToken()`)。\r\n* 現在の位置の文字が括弧(`isParen()`)の場合は括弧文字列を切り出します(`_readParenToken()`)。\r\n* 予期せぬ文字だった場合はエラー(`'unknown-character'`)を発生させます。\r\n",
+      "line": 38
+    },
+    {
+      "file": "src/lib/tokenizer/tokenizer.ts",
+      "description": "## 空白のスキップ\r\n\r\n空白の場合(`isWhiteSpace()`)はスキップ(`currentIndex++`)します。",
+      "line": 65
+    },
+    {
+      "file": "src/lib/tokenizer/tokenizer.ts",
+      "description": "## 数字文字列の切り出し\r\n\r\n一文字目が数字であることがわかっているので、その後数字文字である間一文字ずつ取り出して、現在のインデックスを次に移動していきます。\r\n現在の文字が数字で亡くなったり、末尾に到達したら、`Token`オブジェクトを生成して、返却します。\r\n",
+      "line": 78
+    },
+    {
+      "file": "src/lib/tokenizer/tokenizer.ts",
+      "description": "## 演算子の切り出し\r\n\r\nすでに先頭文字が演算子であることがわかっているので、その文字をそのまま切り出します。",
+      "line": 92
+    },
+    {
+      "file": "src/lib/tokenizer/tokenizer.ts",
+      "description": "## 括弧の切り出し\r\n\r\nすでに現在の位置が括弧文字であることがわかっているので、そのまま括弧として切り出します。",
+      "line": 103
     }
   ]
 }
