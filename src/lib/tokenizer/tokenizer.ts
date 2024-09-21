@@ -1,5 +1,5 @@
 import { TokenizerError } from '../common/errors';
-import { Token, TokenType } from './token';
+import { Token } from './token';
 import { CharUtil } from './char-util';
 
 export class Tokenizer {
@@ -47,12 +47,9 @@ export class Tokenizer {
         } else if (CharUtil.isOperator(this.expression, this.currentIndex)) {
             // 演算子を切り出す
             return this._readOperatorToken();
-        } else if (CharUtil.isLeftParen(this.expression, this.currentIndex)) {
-            // 左括弧
-            return this._readParenToken('leftParen');
-        } else if (CharUtil.isRightParen(this.expression, this.currentIndex)) {
-            // 右括弧
-            return this._readParenToken('rightParen');
+        } else if (CharUtil.isParen(this.expression, this.currentIndex)) {
+            // 括弧を切り出す
+            return this._readParenToken();
         } else {
             // 予期せぬ文字を検出した
             throw new TokenizerError('unknown-character', this.currentIndex);
@@ -97,12 +94,16 @@ export class Tokenizer {
 
     /**
      * 括弧文字列としてTokenを切り出す。
-     * @param startEnd 括弧の開始または終了を表す文字
      * @returns 切り出した字句
      */
-    private _readParenToken(startEnd: 'leftParen' | 'rightParen'): Token {
+    private _readParenToken(): Token {
         const startIndex = this.currentIndex;
+        const parenCharacter = this.expression.charAt(startIndex);
         this.currentIndex++;
-        return new Token(startEnd as TokenType, this.expression.charAt(startIndex), startIndex);
+        return new Token(
+            CharUtil.isLeftParen(this.expression, startIndex) ? 'leftParen' : 'rightParen',
+            parenCharacter,
+            startIndex,
+        );
     }
 }
