@@ -8,14 +8,14 @@ export type NodeType = 'single' | 'binary' | 'paren';
  * ノード
  */
 export abstract class ParserNode {
-    nodeType: NodeType;
-    tokens: Token[];
+    public readonly nodeType: NodeType;
+    public readonly tokens: Token[];
 
     /**
      * @param nodeType ノードの型
      * @param tokens 使われた字句の配列
      */
-    constructor(nodeType: NodeType, tokens: Token[]) {
+    public constructor(nodeType: NodeType, tokens: Token[]) {
         this.nodeType = nodeType;
         this.tokens = tokens;
     }
