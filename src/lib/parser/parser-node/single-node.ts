@@ -5,18 +5,20 @@ import { Token } from '../../tokenizer';
  * 単項ノード
  */
 export class SingleNode extends ParserNode {
-    isNegative: boolean;
-    value: string;
+    public get isNegative(): boolean {
+        return this.tokens[0].isNegativeSign;
+    }
+    public get value(): string {
+        return this.tokens.length === 1 ? this.tokens[0].value : this.tokens[1].value;
+    }
 
     /**
      * @param value 単項の値
      * @param isNegative 単項が負の符号であるかどうか
      * @param tokens このノードに属するトークン
      */
-    constructor(value: string, isNegative: boolean, tokens: Token[]) {
+    constructor(tokens: Token[]) {
         super('single', tokens);
-        this.value = value;
-        this.isNegative = isNegative;
     }
 
     /**

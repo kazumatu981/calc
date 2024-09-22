@@ -160,7 +160,7 @@ export class Parser {
             throw new ParserError('no-token');
         }
         if (this.currentToken.isNumber) {
-            node = new SingleNode(this.currentToken.value, false, [this.currentToken]);
+            node = new SingleNode([this.currentToken]);
             this._currentIndex++;
         } else if (this.currentToken.isNegativeSign) {
             // 現在の一が負の符号だった場合
@@ -170,7 +170,7 @@ export class Parser {
             }
             if (this.nextToken.isNumber) {
                 // 次の一が数字である場合
-                node = new SingleNode(this.nextToken.value, true, [this.currentToken, this.nextToken]);
+                node = new SingleNode([this.currentToken, this.nextToken]);
             } else {
                 throw new ParserError('unexpected-token');
             }
