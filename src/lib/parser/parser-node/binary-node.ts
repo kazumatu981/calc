@@ -7,18 +7,19 @@ import { Token } from '../../tokenizer';
 export class BinaryNode extends ParserNode {
     public left: ParserNode;
     public right: ParserNode;
-    operator: string;
+    public get operator() {
+        return this.tokens[0].value;
+    }
 
     /**
      * @param left 左の項
      * @param right 右の項
      * @param operatorToken 演算子
      */
-    constructor(left: ParserNode, right: ParserNode, operatorToken: Token) {
+    constructor(operatorToken: Token, left: ParserNode, right: ParserNode) {
         super('binary', [operatorToken]);
         this.left = left;
         this.right = right;
-        this.operator = operatorToken.value;
     }
 
     /**
@@ -28,7 +29,7 @@ export class BinaryNode extends ParserNode {
      * @returns 生成された新しい BinaryNode
      */
     public appendToRight(operatorToken: Token, nodeToBeAppended: ParserNode): this {
-        this.right = new BinaryNode(this.right, nodeToBeAppended, operatorToken);
+        this.right = new BinaryNode(operatorToken, this.right, nodeToBeAppended);
         return this;
     }
 
@@ -43,7 +44,7 @@ export class BinaryNode extends ParserNode {
      */
     public connectToTail(operatorToken: Token, nodeToBeConnected: ParserNode): BinaryNode {
         if (operatorToken.isSecondaryOperator) {
-            return new BinaryNode(this, nodeToBeConnected, operatorToken);
+            return new BinaryNode(operatorToken, this, nodeToBeConnected);
         } else {
             // 掛け算や割り算の場合は右の子に接続する
             return this.appendToRight(operatorToken, nodeToBeConnected);

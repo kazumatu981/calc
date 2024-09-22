@@ -27,7 +27,7 @@ export abstract class ParserNode {
      * @returns 生成された新しい BinaryNode
      */
     public connectToTail(operatorToken: Token, nodeToBeConnected: ParserNode): BinaryNode {
-        return new BinaryNode(this, nodeToBeConnected, operatorToken);
+        return new BinaryNode(operatorToken, this, nodeToBeConnected);
     }
 
     /**

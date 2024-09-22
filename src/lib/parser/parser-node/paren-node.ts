@@ -10,7 +10,7 @@ export class ParenNode extends ParserNode {
      * @param childRoot 中身のノード
      * @param tokens字句の配列
      */
-    constructor(childRoot: ParserNode, tokens: Token[]) {
+    constructor(tokens: Token[], childRoot: ParserNode) {
         super('paren', tokens);
         this.childRoot = childRoot;
     }

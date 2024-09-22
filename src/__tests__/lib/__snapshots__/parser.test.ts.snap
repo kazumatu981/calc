@@ -44,7 +44,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -82,7 +81,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -97,7 +95,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "-",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -165,7 +162,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -208,7 +204,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -229,7 +224,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -297,7 +291,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -340,7 +333,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -377,7 +369,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -414,7 +405,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": BinaryNode {
     "left": SingleNode {
       "nodeType": "single",
@@ -428,7 +418,6 @@ BinaryNode {
       ],
     },
     "nodeType": "binary",
-    "operator": "*",
     "right": SingleNode {
       "nodeType": "single",
       "tokens": Array [
@@ -474,7 +463,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "/",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -511,7 +499,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -578,7 +565,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -616,7 +602,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -631,7 +616,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "-",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -699,7 +683,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -742,7 +725,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -763,7 +745,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -831,7 +812,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -874,7 +854,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -911,7 +890,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -948,7 +926,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": BinaryNode {
     "left": SingleNode {
       "nodeType": "single",
@@ -962,7 +939,6 @@ BinaryNode {
       ],
     },
     "nodeType": "binary",
-    "operator": "*",
     "right": SingleNode {
       "nodeType": "single",
       "tokens": Array [
@@ -1008,7 +984,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "/",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1045,7 +1020,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1112,7 +1086,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -1150,7 +1123,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -1165,7 +1137,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "-",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -1233,7 +1204,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1276,7 +1246,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -1297,7 +1266,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -1365,7 +1333,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1408,7 +1375,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1445,7 +1411,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1482,7 +1447,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": BinaryNode {
     "left": SingleNode {
       "nodeType": "single",
@@ -1496,7 +1460,6 @@ BinaryNode {
       ],
     },
     "nodeType": "binary",
-    "operator": "*",
     "right": SingleNode {
       "nodeType": "single",
       "tokens": Array [
@@ -1542,7 +1505,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "/",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1579,7 +1541,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1646,7 +1607,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -1684,7 +1644,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -1699,7 +1658,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "-",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -1767,7 +1725,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1810,7 +1767,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": ParenNode {
     "childRoot": BinaryNode {
       "left": SingleNode {
@@ -1831,7 +1787,6 @@ BinaryNode {
         ],
       },
       "nodeType": "binary",
-      "operator": "+",
       "right": SingleNode {
         "nodeType": "single",
         "tokens": Array [
@@ -1899,7 +1854,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1942,7 +1896,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "*",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -1979,7 +1932,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -2016,7 +1968,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "+",
   "right": BinaryNode {
     "left": SingleNode {
       "nodeType": "single",
@@ -2030,7 +1981,6 @@ BinaryNode {
       ],
     },
     "nodeType": "binary",
-    "operator": "*",
     "right": SingleNode {
       "nodeType": "single",
       "tokens": Array [
@@ -2076,7 +2026,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "/",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [
@@ -2113,7 +2062,6 @@ BinaryNode {
     ],
   },
   "nodeType": "binary",
-  "operator": "-",
   "right": SingleNode {
     "nodeType": "single",
     "tokens": Array [

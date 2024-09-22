@@ -196,7 +196,7 @@ export class Parser {
         const parenEndToken = childParser.currentToken as Token;
         this._currentIndex = childParser._currentIndex + 1;
 
-        return new ParenNode(childRoot, [parenStartToken, parenEndToken]);
+        return new ParenNode([parenStartToken, parenEndToken], childRoot);
     }
 
     /**
