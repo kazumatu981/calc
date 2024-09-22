@@ -7,8 +7,8 @@ import { Token } from '../../tokenizer';
 export class ParenNode extends ParserNode {
     public childRoot: ParserNode;
     /**
-     * @param childRoot 中身のノード
      * @param tokens字句の配列
+     * @param childRoot 中身のノード
      */
     constructor(tokens: Token[], childRoot: ParserNode) {
         super('paren', tokens);

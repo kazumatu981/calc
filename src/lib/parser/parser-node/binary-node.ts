@@ -12,9 +12,9 @@ export class BinaryNode extends ParserNode {
     }
 
     /**
+     * @param operatorToken 演算子
      * @param left 左の項
      * @param right 右の項
-     * @param operatorToken 演算子
      */
     constructor(operatorToken: Token, left: ParserNode, right: ParserNode) {
         super('binary', [operatorToken]);

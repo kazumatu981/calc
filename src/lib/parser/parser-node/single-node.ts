@@ -28,8 +28,6 @@ export class SingleNode extends ParserNode {
     }
 
     /**
-     * @param value 単項の値
-     * @param isNegative 単項が負の符号であるかどうか
      * @param tokens このノードに属するトークン
      */
     constructor(tokens: Token[]) {
