@@ -1,5 +1,5 @@
-type ModuleName = 'tokenizer' | 'parser';
-type ErrorCodes =
+type ModuleName = 'tokenizer' | 'parser' | 'unknown';
+export type ErrorCodes =
     | 'unknown-character'
     | 'no-token'
     | 'paren-must-be-expected'
@@ -19,11 +19,18 @@ const MessageDictionary: Record<ErrorCodes, string> = {
     'unknown-error': '不明なエラー',
 };
 
-class CalcErrorBase extends Error {
+export class CalcErrorBase extends Error {
     /**
      * エラーが発生したモジュール名
      */
-    public readonly moduleName: ModuleName;
+    private _moduleName: ModuleName = 'unknown';
+    public get moduleName(): ModuleName {
+        return this._moduleName;
+    }
+    protected set moduleName(moduleName: ModuleName) {
+        this._moduleName = moduleName;
+    }
+
     /**
      * エラーコード
      */
@@ -32,10 +39,9 @@ class CalcErrorBase extends Error {
      * エラーの補足メッセージ
      */
     public readonly appendixMessage?: string;
-    public constructor(moduleName: ModuleName, code: ErrorCodes, appendixMessage?: string) {
+    public constructor(code: ErrorCodes, appendixMessage?: string) {
         const message: string = MessageDictionary[code] ?? MessageDictionary['unknown-error'];
         super(message);
-        this.moduleName = moduleName;
         this.code = code;
         this.appendixMessage = appendixMessage;
     }
@@ -45,15 +51,17 @@ export class TokenizerError extends CalcErrorBase {
     /**
      * トークンの位置(何文字目で検出したか)
      */
-    public readonly position: number;
-    public constructor(code: ErrorCodes, position: number, appendixMessage?: string) {
-        super('tokenizer', code, appendixMessage);
+    public readonly position?: number;
+    public constructor(code: ErrorCodes, appendixMessage?: string, position?: number) {
+        super(code, appendixMessage);
+        this.moduleName = 'tokenizer';
         this.position = position;
     }
 }
 
 export class ParserError extends CalcErrorBase {
     public constructor(code: ErrorCodes, appendixMessage?: string) {
-        super('parser', code, appendixMessage);
+        super(code, appendixMessage);
+        this.moduleName = 'parser';
     }
 }

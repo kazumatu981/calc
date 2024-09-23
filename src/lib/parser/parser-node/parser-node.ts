@@ -40,8 +40,8 @@ export abstract class ParserNode {
      */
     public static connectTwoNodes(
         node1: ParserNode | undefined,
-        node2: ParserNode,
         operatorToken: Token | undefined,
+        node2: ParserNode,
     ): ParserNode {
         if (node1 === undefined) {
             return node2;

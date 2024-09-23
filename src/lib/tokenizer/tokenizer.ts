@@ -52,7 +52,7 @@ export class Tokenizer {
             return this._readParenToken();
         } else {
             // 予期せぬ文字を検出した
-            throw new TokenizerError('unknown-character', this.currentIndex);
+            throw new TokenizerError('unknown-character', '', this.currentIndex);
         }
     }
 
