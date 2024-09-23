@@ -23,17 +23,6 @@ export class BinaryNode extends ParserNode {
     }
 
     /**
-     * 右の項に nodeToBeAppended を operatorToken でつなげて、新しいノードを生成する
-     * @param operatorToken 演算子
-     * @param nodeToBeAppended つなげるノード
-     * @returns 生成された新しい BinaryNode
-     */
-    public appendToRight(operatorToken: Token, nodeToBeAppended: ParserNode): this {
-        this.right = new BinaryNode(operatorToken, this.right, nodeToBeAppended);
-        return this;
-    }
-
-    /**
      * 右の項に nodeToBeConnected を operatorToken でつなげて、新しいノードを生成する
      * @param operatorToken 演算子
      * @param nodeToBeConnected つなげるノード
@@ -47,7 +36,9 @@ export class BinaryNode extends ParserNode {
             return new BinaryNode(operatorToken, this, nodeToBeConnected);
         } else {
             // 掛け算や割り算の場合は右の子に接続する
-            return this.appendToRight(operatorToken, nodeToBeConnected);
+            const newNode = new BinaryNode(operatorToken, this.right, nodeToBeConnected);
+            this.right = newNode;
+            return this;
         }
     }
 
