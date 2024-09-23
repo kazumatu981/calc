@@ -1,6 +1,7 @@
 import { Token } from '../tokenizer/token';
-import { ParserError } from '../common/errors';
 import { ParserNode, SingleNode, ParenNode } from './parser-node';
+import { __assert } from '../common/assert';
+import { ParserError } from '../common/errors';
 
 /**
  * 解析モード
@@ -53,15 +54,17 @@ export class Parser {
             if (isFist) {
                 isFist = false;
             }
-            rootNode = ParserNode.connectTwoNodes(rootNode, node, operatorToken);
+            rootNode = ParserNode.connectTwoNodes(rootNode, operatorToken, node);
         }
-        if (rootNode === undefined) {
-            throw new ParserError('no-token');
+
+        // 構文木を構築できなかった場合、エラーを返却する
+        __assert(ParserError).notUndefined(rootNode, 'no-token');
+        if (this._mode === 'paren') {
+            // 括弧モードの場合、最後が右括弧でない場合はエラーを返却する
+            __assert(ParserError).toTrue(this.endWithRightParen, 'paren-must-be-expected');
         }
-        if (this._mode === 'paren' && !this.endWithRightParen) {
-            throw new ParserError('paren-must-be-expected');
-        }
-        return rootNode;
+
+        return rootNode as ParserNode;
     }
 
     /**
@@ -92,7 +95,7 @@ export class Parser {
                 // 末尾に到達
                 return false;
             }
-            return this._currentIndex < this._tokens.length && !this.endWithRightParen;
+            return !this.endWithRightParen;
         }
     }
 
@@ -114,22 +117,23 @@ export class Parser {
         node: ParserNode;
     } {
         let operatorToken: Token | undefined = undefined;
-        let node: ParserNode;
+        let node: ParserNode | undefined = undefined;
+
         if (!isFirst) {
             operatorToken = this._readAsOperatorToken();
         }
 
-        if (this.currentToken === undefined) {
-            throw new ParserError('operator-must-not-be-last');
-        } else if (this.currentToken.isNumber || this.currentToken.isNegativeSign) {
+        __assert(ParserError).notUndefined(this.currentToken, 'operator-must-not-be-last');
+
+        if (this.currentToken!.isNumber || this.currentToken!.isNegativeSign) {
             node = this._readAsSingleNode();
-        } else if (this.currentToken.isLeftParen) {
+        } else if (this.currentToken!.isLeftParen) {
             node = this._readAsParenNode();
-        } else {
-            throw new ParserError('unexpected-token');
         }
 
-        return { operatorToken, node };
+        __assert(ParserError).notUndefined(node, 'unexpected-token');
+
+        return { operatorToken, node: node as ParserNode };
     }
 
     /**
@@ -139,12 +143,13 @@ export class Parser {
      */
     private _readAsOperatorToken(): Token | undefined {
         let operatorToken: Token | undefined = undefined;
-        if (this.currentToken?.type === 'operator') {
-            operatorToken = this.currentToken;
-            this._currentIndex++;
-        } else {
-            throw new ParserError('operator-must-be-expected');
-        }
+
+        __assert(ParserError).notUndefined(this.currentToken, 'no-token');
+        __assert(ParserError).toTrue(this.currentToken!.isOperator, 'operator-must-be-expected');
+
+        operatorToken = this.currentToken;
+        this._currentIndex++;
+
         return operatorToken;
     }
 
@@ -155,30 +160,29 @@ export class Parser {
      * @throws {ParserError} 現在の位置にある字句がマイナス記号か数字でない場合
      */
     private _readAsSingleNode(): SingleNode {
-        let node: SingleNode;
-        if (this.currentToken === undefined) {
-            throw new ParserError('no-token');
-        }
-        if (this.currentToken.isNumber) {
-            node = new SingleNode(this.currentToken.value, false, [this.currentToken]);
+        let node: SingleNode | undefined = undefined;
+
+        // 現在のトークンがないといけない
+        __assert(ParserError).notUndefined(this.currentToken, 'no-token');
+
+        if (this.currentToken!.isNumber) {
+            // 現在のトークンが数字だった場合
+            node = new SingleNode([this.currentToken!]);
             this._currentIndex++;
-        } else if (this.currentToken.isNegativeSign) {
-            // 現在の一が負の符号だった場合
-            if (this.nextToken === undefined) {
-                // 末端まで行ってしまった
-                throw new ParserError('no-token');
-            }
-            if (this.nextToken.isNumber) {
-                // 次の一が数字である場合
-                node = new SingleNode(this.nextToken.value, true, [this.currentToken, this.nextToken]);
-            } else {
-                throw new ParserError('unexpected-token');
-            }
+        } else if (this.currentToken!.isNegativeSign) {
+            // 次のトークンが数字でなければエラー
+            __assert(ParserError).notUndefined(this.nextToken, 'no-token');
+            __assert(ParserError).toTrue(this.nextToken!.isNumber, 'unexpected-token');
+
+            // 現在のトークンがマイナス記号であった場合
+            node = new SingleNode([this.currentToken!, this!.nextToken!]);
             this._currentIndex += 2;
-        } else {
-            throw new ParserError('unexpected-token');
         }
-        return node;
+
+        // 現在のトークンが数字でも、マイナス記号でもなければエラー
+        __assert(ParserError).notUndefined(node, 'unexpected-token');
+
+        return node as SingleNode;
     }
 
     /**
@@ -196,7 +200,7 @@ export class Parser {
         const parenEndToken = childParser.currentToken as Token;
         this._currentIndex = childParser._currentIndex + 1;
 
-        return new ParenNode(childRoot, [parenStartToken, parenEndToken]);
+        return new ParenNode([parenStartToken, parenEndToken], childRoot);
     }
 
     /**
