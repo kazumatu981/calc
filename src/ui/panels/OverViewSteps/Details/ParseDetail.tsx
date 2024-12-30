@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { ProcessDetail } from './ProcessDetail';
 import { ParserNode } from '../../../../lib/parser';
 

@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { BinaryNode, ParenNode, type ParserNode, SingleNode } from '../../lib/parser/parser-node';
 import { OrganizationChart, OrganizationChartNodeData } from 'primereact/organizationchart';
 import './ParserNodesViewer.css';

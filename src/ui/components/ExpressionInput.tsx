@@ -1,4 +1,4 @@
-import { FormEventHandler, MouseEventHandler, useEffect, useState } from 'react';
+import { FormEventHandler, MouseEventHandler, useEffect, useState, JSX } from 'react';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { PositionViewer } from './PositionViewer';

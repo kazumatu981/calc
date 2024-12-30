@@ -1,6 +1,6 @@
 import { Terminal } from 'primereact/terminal';
 import { TerminalService } from 'primereact/terminalservice';
-import { useEffect } from 'react';
+import { useEffect, JSX } from 'react';
 
 import { resolveAsync } from '../../lib/resolver';
 import './TerminalPanel.css';

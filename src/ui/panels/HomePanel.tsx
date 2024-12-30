@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, JSX } from 'react';
 import { Fieldset } from 'primereact/fieldset';
 import { parseAsync } from '../../lib/parser';
 import { resolveAsync } from '../../lib/resolver';

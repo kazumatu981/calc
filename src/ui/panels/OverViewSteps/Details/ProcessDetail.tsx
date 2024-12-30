@@ -1,3 +1,5 @@
+import { JSX } from 'react';
+
 interface ProcessDetailProps {
     figure: JSX.Element;
     description: JSX.Element;
